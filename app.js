@@ -6,8 +6,8 @@ const ingredientes = require("./routes/ingredientes")
 const pedidos = require("./routes/pedidos")
 const produtos = require("./routes/produtos")
 
-app.set('view engine', 'ejs');
-app.set('views', './views');
+app.set('view engine', 'ejs')
+app.set('views', './views')
 
 app.use("/", index)
 app.use("/ingredientes", ingredientes)
