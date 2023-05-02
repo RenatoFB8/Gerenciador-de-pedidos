@@ -27,8 +27,8 @@ nav {
 
 .abas {
     font-family: 'Inter', sans-serif;
-    margin-right: 15vw;
     display: flex;
+    justify-content: center;
     gap: 20px;
 }
 
