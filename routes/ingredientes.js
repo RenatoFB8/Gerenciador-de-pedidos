@@ -24,7 +24,7 @@ router.post("/add", (req, res) => {
     res.redirect("/ingredientes")
   } else {
     let aviso = "O valor digitado não é um número"
-    res.send(aviso)
+    res.json({aviso})
   }
 })
 
