@@ -36,6 +36,9 @@
             <input type="text" name="valor" placeholder="valor">
             <input type="submit" value="enviar">
         </form>
+        <% if (typeof(aviso) != "undefined") { %>
+         <h3><%= aviso %></h3>
+        <% } %>
     </section>
 </body>
 </html>

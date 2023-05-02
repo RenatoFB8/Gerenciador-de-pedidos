@@ -15,25 +15,16 @@ router.get('/', (req, res) => {
 
 router.post("/add", (req, res) => {
   let nome = req.body.nome
-  let valor = req.body.valor
-  //Troca a "," por "."
-  valor = valor.replace(',','.')
-  let Isnumber = isNaN(valor)
-  //retorna false para número reais
-  if(Isnumber == false){
-    valor = Number(valor)
-    valor = valor.toFixed(2)
-    valor = valor.toString()
-    valor = valor.replace('.',',')
-    db.collection('ingredientes').doc(nome).set({nome, valor});
-    res.redirect("/ingredientes")
-  } else{
-    console.log("O valor digitado não é um número")
-    //let aviso = "O valor digitado não é um número"
-    //res.render("ingredientes", aviso)
-    //wenderson adiciona a variavel lá no ejs
-    //pfvrvozinho
+  let valor = req.body.valor.replace(',','.')
+  
+  if(isNaN(valor) == false){
+    valor = Number(valor).toFixed(2)
 
+    db.collection('ingredientes').doc(nome).set({nome, valor})
+    res.redirect("/ingredientes")
+  } else {
+    let aviso = "O valor digitado não é um número"
+    res.send(aviso)
   }
 })
 
