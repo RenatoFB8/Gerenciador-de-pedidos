@@ -24,8 +24,8 @@ router.post("/add", (req, res) => {
 router.post("/edit", (req, res) => {
   let nomeAntigo = req.body.nomeAntigo
   let nomeNovo = req.body.nomeNovo
-  let valorAntigo = req.body.valorAntigo
-  let valorNovo = req.body.valorNovo
+  let valorAntigo = Number(req.body.valorAntigo)
+  let valorNovo = Number(req.body.valorNovo)
   if (nomeNovo==""){
      nomeNovo = nomeAntigo
   }
