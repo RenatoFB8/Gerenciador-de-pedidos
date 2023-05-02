@@ -17,6 +17,8 @@ app.set('views', './views')
 // definindo diretório de arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.urlencoded({extended: true}))
+
 // definindo as rotas
 app.use("/", index)
 app.use("/ingredientes", ingredientes)

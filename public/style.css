@@ -1,52 +1,44 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
-body{
+
+body {
     background-color: #F6E5C7;
 }
-header{
+
+.conteiners {
+    padding: 0 15vw;
+}
+header {
     background-color: #887BB0 ;
     overflow: hidden;
     width: 100%;
 }
 
-nav{
-
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
-
-
-.abas{
+.abas {
     font-family: 'Inter', sans-serif;
     margin-right: 15vw;
     display: flex;
     gap: 20px;
 }
 
-.abas a{
+.abas a {
     color: #FFFFFF;
     text-decoration: none;
-
-    
 }
 
-
-#chocoletsLogo{
-
-    
+#logo {
     width: 90px;
     height: 88px;
-    margin-left: 15vw;
-    
 }
  

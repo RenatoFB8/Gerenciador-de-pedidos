@@ -9,23 +9,23 @@ router.get('/', (req, res) => {
       ingredientes.forEach(ingrediente => {
         lista.push(ingrediente.data())
       })
-      console.log(lista)
-    res.send(lista)
+      res.render("ingredientes", {ingredientes:lista})
     })
 })
 
 router.post("/add", (req, res) => {
-  let nome = "chocolate"
-  let valor = 1000
+  let nome = req.body.nome
+  let valor = Number(req.body.valor)
   db.collection('ingredientes').doc(nome).set({nome, valor});
 
-  res.end()
+  res.redirect("/ingredientes")
 })
-router.put("/update", (req, res) => {
-  let nomeAntigo = "chocolate"
-  let nomeNovo = "maçã"
-  let valorAntigo = 2000
-  let valorNovo = 100000
+
+router.post("/edit", (req, res) => {
+  let nomeAntigo = req.body.nomeAntigo
+  let nomeNovo = req.body.nomeNovo
+  let valorAntigo = req.body.valorAntigo
+  let valorNovo = req.body.valorNovo
   if (nomeNovo==""){
      nomeNovo = nomeAntigo
   }
@@ -37,11 +37,13 @@ router.put("/update", (req, res) => {
       db.collection("ingredientes").doc(nomeNovo).set({nome:nomeNovo, valor:valorNovo})
       db.collection("ingredientes").doc(nomeAntigo).delete()
     })
-  res.end()
+  res.redirect("/ingredientes")
+
 })
-router.delete("/delete", (req, res) => {
-  let nome = "maçã"
+
+router.post("/delete", (req, res) => {
+  let nome = req.body.nome
   db.collection("ingredientes").doc(nome).delete()
-  res.end()
+  res.redirect("/ingredientes")
 })
 module.exports = router
