@@ -12,42 +12,54 @@
         <h1>ingredientes</h1>
         <button>adicionar</button>
     </section>
-    <section class="conteiners">
+    <section class="conteiners ingredientes">
         <% ingredientes.forEach(ingrediente => { %>
             <div class="ingrediente" nome="<%= ingrediente.nome %>">
-                <h2><%= ingrediente.nome %></h2>
-                <p>Preço = <%= ingrediente.valor %></p>
+                <p><%= ingrediente.nome %></p>
                 
-                <form action="/ingredientes/edit" method="post">
-                    <input type="hidden" name="nomeAntigo" value="<%= ingrediente.nome %>">
-                    <input type="text" name="nomeNovo" placeholder="novo nome">
-                    <input type="hidden" name="valorAntigo" value="<%= ingrediente.nome %>">
-                    <input type="text" name="valorNovo" placeholder="novo preço">
-                    <input type="submit" value="editar">
-                </form>
+                <div>
+                    <button nome="<%= ingrediente.nome %>">editar</button>
+                    <form action="/ingredientes/edit" method="post" nome="<%= ingrediente.nome %>">
+                        <input type="hidden" name="nomeAntigo" value="<%= ingrediente.nome %>">
+                        <input type="text" name="nomeNovo" placeholder="novo nome">
+                        <input type="hidden" name="valorAntigo" value="<%= ingrediente.nome %>">
+                        <input type="text" name="valorNovo" placeholder="novo preço">
+                        <input type="submit" value="editar">
+                    </form>
 
-                <form action="/ingredientes/delete" method="post">
-                    <input type="hidden" name="nome" value="<%= ingrediente.nome %>">
-                    <input type="submit" value="apagar">
-                </form>
+                    <p>R$<%= ingrediente.valor %>/g</p>
 
+                    <button nome="<%= ingrediente.nome %>">apagar</button>
+                    <form action="/ingredientes/delete" method="post" nome="<%= ingrediente.nome %>">
+                        <input type="hidden" name="nome" value="<%= ingrediente.nome %>">
+                        <input type="submit" value="apagar">
+                    </form>
+                </div>
+               
             </div>
         <% }) %>
     </section>
     
     <div class="opacidade"></div>
     
-    <section class="conteiners addIngredientes" id="">
+    <section class="addIngredientes" id="">
         <!-- ADD INGREDIENTE -->
         <h2>adicionar ingrediente</h2>
         <form action="/ingredientes/add" method="post" id="add-ingrediente">
             <input type="text" name="nome" placeholder="nome">
             <input type="text" name="valor" placeholder="valor">
             <input type="text" name="quantidade" placeholder="quantidade">
-            <input type="radio" name="medida" value="unidades"> <label for="unidades">unidades</label>
-            <input type="radio" name="medida" value="gramas"> <label for="gramas">gramas</label>
+            <div>
+                <div>
+                    <input id="unidades" type="radio" name="medida" value="unidades">
+                    <label for="unidades">unidades</label>
+                </div>
+                <div>
+                    <input id="gramas" type="radio" name="medida" value="gramas">
+                    <label for="gramas">gramas</label>
+                </div>
+            </div>
             <input type="submit" value="adicionar">
-            
         </form>
 
     </section>
