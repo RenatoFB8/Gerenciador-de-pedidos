@@ -8,11 +8,16 @@
     <header class="conteiners">
         <%- include('./partials/header') %>
     </header>
+    <section class="conteiners ingHeader">
+        <h1>ingredientes</h1>
+        <button>adicionar</button>
+    </section>
     <section class="conteiners">
         <% ingredientes.forEach(ingrediente => { %>
             <div class="ingrediente" nome="<%= ingrediente.nome %>">
                 <h2><%= ingrediente.nome %></h2>
                 <p>Preço = <%= ingrediente.valor %></p>
+                
                 <form action="/ingredientes/edit" method="post">
                     <input type="hidden" name="nomeAntigo" value="<%= ingrediente.nome %>">
                     <input type="text" name="nomeNovo" placeholder="novo nome">
@@ -20,23 +25,35 @@
                     <input type="text" name="valorNovo" placeholder="novo preço">
                     <input type="submit" value="editar">
                 </form>
+
                 <form action="/ingredientes/delete" method="post">
                     <input type="hidden" name="nome" value="<%= ingrediente.nome %>">
                     <input type="submit" value="apagar">
                 </form>
+
             </div>
         <% }) %>
     </section>
-
-    <section class="conteiners">
+    
+    <div class="opacidade"></div>
+    
+    <section class="conteiners addIngredientes" id="">
         <!-- ADD INGREDIENTE -->
-        <h2>ADICIONAR INGREDIENTE</h2>
+        <h2>adicionar ingrediente</h2>
         <form action="/ingredientes/add" method="post" id="add-ingrediente">
             <input type="text" name="nome" placeholder="nome">
             <input type="text" name="valor" placeholder="valor">
-            <input type="submit" value="enviar">
+            <input type="text" name="quantidade" placeholder="quantidade">
+            <input type="radio" name="medida" value="unidades"> <label for="unidades">unidades</label>
+            <input type="radio" name="medida" value="gramas"> <label for="gramas">gramas</label>
+            <input type="submit" value="adicionar">
+            
         </form>
+
     </section>
+
+   <div class="div-show"></div>
+   <div class="div-hide"></div>
 
     <script src="/script.js"></script>
 </body>
