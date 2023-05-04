@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 router.post("/add", (req, res) => {
   let nome = req.body.nome
   let valor = req.body.valor.replace(',','.')
+  let 
   
   if(isNaN(valor) == false){
     valor = Number(valor).toFixed(2)
