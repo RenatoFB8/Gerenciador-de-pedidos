@@ -20,6 +20,7 @@
                 <div>
                     <button nome="<%= ingrediente.nome %>">editar</button>
                     <form action="/ingredientes/edit" method="post" nome="<%= ingrediente.nome %>">
+                        <h3>editar</h3>
                         <input type="hidden" name="nomeAntigo" value="<%= ingrediente.nome %>">
                         <input type="text" name="nomeNovo" placeholder="novo nome">
                         <input type="hidden" name="valorAntigo" value="<%= ingrediente.nome %>">
@@ -31,8 +32,10 @@
 
                     <button nome="<%= ingrediente.nome %>">apagar</button>
                     <form action="/ingredientes/delete" method="post" nome="<%= ingrediente.nome %>">
+                        <h3>Deseja mesmo apagar?</h3>
                         <input type="hidden" name="nome" value="<%= ingrediente.nome %>">
-                        <input type="submit" value="apagar">
+                        <button>não</button>
+                        <input type="submit" value="sim">
                     </form>
                 </div>
                
