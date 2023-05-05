@@ -46,11 +46,11 @@ button.addEventListener("click", () => {
 
 // evento ingrediente edit e delete
 
-let buttonsEdit = document.querySelectorAll(".ingrediente div button")
-buttonsEdit.forEach(button => {
-	button.addEventListener("click", () => {
-		let editForm = document.querySelector(`button[nome='${button.getAttribute("nome")}'] + form[action="/ingredientes/edit"]`)
-		let deleteForm = document.querySelector(`button[nome='${button.getAttribute("nome")}'] + form[action="/ingredientes/delete"]`)
+let icons = document.querySelectorAll(".ingrediente div img")
+icons.forEach(icon => {
+	icon.addEventListener("click", () => {
+		let editForm = document.querySelector(`img[nome='${icon.getAttribute("nome")}'] + form[action="/ingredientes/edit"]`)
+		let deleteForm = document.querySelector(`img[nome='${icon.getAttribute("nome")}'] + form[action="/ingredientes/delete"]`)
 		let efect = document.querySelector('.opacidade')
 
 		// clicar fora da tela fecha o form
@@ -59,6 +59,7 @@ buttonsEdit.forEach(button => {
 			deleteForm.style.display = 'none'
 			efect.style.display = 'none'
 		})
+
 		efect.style.display = 'block'
 		
 		// botão de delete fecha o form
@@ -68,7 +69,8 @@ buttonsEdit.forEach(button => {
 			deleteForm.style.display = 'none'
 			efect.style.display = 'none'
 		})
-		if (button.textContent == "editar") {
+
+		if (icon.getAttribute("alt")=="editar") {
 			editForm.style.display = "flex"
 		} else {
 			deleteForm.style.display = "flex"

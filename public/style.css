@@ -50,7 +50,8 @@ nav {
 
 .ingHeader{
     display:flex;
-    justify-content:space-between ;
+    justify-content:space-between;
+    flex-wrap: wrap;
     margin: 35px 0;
     font-size: 24px;
     color: #5F4C9A;
@@ -152,8 +153,12 @@ nav {
     box-shadow: 0 0 0 7px #5F4C9A;
     border-radius: 10px;
     color: #5F4C9A;
-    height: 60px;
+    min-height: 60px;
     padding: 8px 16px;
+}
+.ingrediente img {
+    height: 20px;
+    cursor: pointer;
 }
 .ingrediente form h3 {
     margin-bottom: 15px;
@@ -167,6 +172,7 @@ nav {
     color: #887BB0;
     cursor: pointer;
 }
+
 .ingrediente div {
     display: flex;
     width: 100%;

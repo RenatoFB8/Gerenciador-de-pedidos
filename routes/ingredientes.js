@@ -16,12 +16,15 @@ router.get('/', (req, res) => {
 router.post("/add", (req, res) => {
   let nome = req.body.nome
   let valor = req.body.valor.replace(',','.')
-  let 
-  
-  if(isNaN(valor) == false){
-    valor = Number(valor).toFixed(2)
+  let quant = req.body.quantidade
+  let medida = req.body.medida
 
-    db.collection('ingredientes').doc(nome).set({nome, valor})
+  let preco = valor/quant
+  console.log(preco)
+  if(isNaN(preco) == false){
+    preco = Number(preco).toFixed(2)
+
+    db.collection('ingredientes').doc(nome).set({nome, preco, medida})
     res.redirect("/ingredientes")
   } else {
     let aviso = "O valor digitado não é um número"
