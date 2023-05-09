@@ -6,7 +6,9 @@
     padding: 0;
     box-sizing: border-box;
     border: none;
-    
+    font-family: 'Inconsolata', monospace;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
