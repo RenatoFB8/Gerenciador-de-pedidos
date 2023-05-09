@@ -50,7 +50,7 @@ nav {
     height: 55px;
 }
 
-.ingHeader{
+.pageHeader{
     display:flex;
     justify-content:space-between;
     flex-wrap: wrap;
@@ -60,7 +60,7 @@ nav {
     font-weight: 600;
 }
 
-.ingHeader button{
+.pageHeader button{
     background-color:#887BB0;
     color: #FFFFFF;
     padding: 0 50px;
@@ -73,7 +73,7 @@ nav {
 .ingredientes {
     padding-bottom: 50px;
 }
-.addIngredientes, .ingrediente form {
+.addConteudo, .ingrediente form {
     background-color: #FFFFFF;
     align-items: center;
     justify-content: center;
@@ -91,7 +91,7 @@ nav {
     z-index: 2;
 }
 
-.addIngredientes h2{
+.addConteudo h2{
     white-space: nowrap;
     text-align: center;
     /* font-size: 28px; */
@@ -99,14 +99,14 @@ nav {
     font-weight: 500;
 }
 
-.addIngredientes form {
+.addConteudo form {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 13px;
     width: 100%;
 }
-.addIngredientes form input:not([type=radio]), .ingrediente form input{
+.addConteudo form input:not([type=radio]), .ingrediente form input{
     background-color: #D9D9D9;
     padding: 15px;
     border-radius: 10px;
@@ -114,17 +114,17 @@ nav {
     /* font-size: 16px; */
 }
 
-.addIngredientes form div {
+.addConteudo form div {
     display: flex;
     gap: 20px;
 }
-.addIngredientes form div div{
+.addConteudo form div div{
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.addIngredientes form input[type=submit], .ingrediente form input[type="submit"]{
+.addConteudo form input[type=submit], .ingrediente form input[type="submit"]{
     background-color: #887BB0;
     color: #ffffff;
     cursor: pointer;
@@ -180,3 +180,58 @@ nav {
     width: 100%;
     justify-content: space-between;
 }
+
+#addProduto{
+
+display: flex;
+
+}
+
+#add-produto{
+
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 30px;
+
+}
+
+#addProduto input[type=button]{
+
+color: rgba(0, 0, 0, 0.5);
+text-align: left;
+cursor: pointer;
+
+}
+
+.selecionarIngrediente{
+
+background-color: #D9D9D9;
+padding: 15px;
+border-radius: 10px;
+width: 100%;
+
+}
+
+.selecionarIngrediente select{
+
+border: none;
+appearance: none;
+width: fit-content;
+color: #5F4C9A;
+background-color: #D9D9D9;
+height: fit-content;
+}
+
+#adicionarSelect{
+
+background-image: url(/src/mais.png);
+background-repeat: no-repeat;
+background-position-x: calc(100% - 10px);
+background-position-y: center;
+background-size: 25px;
+
+}
+
+
+
+

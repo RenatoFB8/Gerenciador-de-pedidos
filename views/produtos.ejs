@@ -8,5 +8,35 @@
     <header class="conteiners">
         <%- include('./partials/header') %>
     </header>
+
+    <section class="conteiners pageHeader">
+        <h1>Produtos</h1>
+        <button>Adicionar</button>
+    </section>
+
+    <div class="opacidade"></div>
+    
+    <section class="addConteudo" id="addProduto">
+        <!-- ADD INGREDIENTE -->
+        <h2>adicionar produto</h2>
+
+        <form action="/produtos/add" method="post" id="add-produto">
+            <input type="text" name="produto" placeholder="produto">
+            <input type="button" value="ingrediente" id="adicionarSelect">
+            <input type="text" name="lucro" placeholder="lucro em %">
+            <div class="selecionarIngrediente"> 
+
+            <select name="" id="">
+                <option value="teste">teste</option>
+            </select>
+
+            </div>
+
+            <input type="submit" value="adicionar">
+            
+        </form>
+        
+        </section>
+    <script src="/script.js"></script>
 </body>
 </html>

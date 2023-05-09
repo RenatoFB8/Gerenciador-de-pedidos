@@ -29,11 +29,11 @@ form.addEventListener('submit', (event) => {
 })
 
 // evento no botao adicionar 
-let button = document.querySelector(".ingHeader > button")
+let button = document.querySelector(".pageHeader > button")
 
 
 button.addEventListener("click", () => {
-	let div = document.querySelector('.addIngredientes')
+	let div = document.querySelector('.addConteudo')
 	let efect = document.querySelector('.opacidade')
 
 	efect.addEventListener("click", () => {
