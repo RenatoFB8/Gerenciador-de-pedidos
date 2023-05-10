@@ -1,48 +1,65 @@
-const form = document.querySelector('#add-ingrediente')
-
-form.addEventListener('submit', (event) => {
-	event.preventDefault()
-
-	const formData = new FormData(form)
-	const jsonData = {};
-
-	for (let [key, value] of formData.entries()) {
-		jsonData[key] = value;
-	}
-	fetch('/ingredientes/add', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(jsonData)
-		})
-		.then(res => res.text())
-		.then(data => {
-			try {
-				let obj = JSON.parse(data)
-				alert(obj.aviso)
-			} catch {
-				return
-			}
-		})
-	window.location.reload();
+document.querySelectorAll('.addConteudo').forEach(div => {
+	div.style.display = 'none'
 })
+document.querySelectorAll('.ingrediente form').forEach(div => {
+	div.style.display = 'none'
+})
+
+const forms = document.querySelectorAll('.add')
+
+forms.forEach(form => {
+	form.addEventListener('submit', (event) => {
+		event.preventDefault()
+	
+		const formData = new FormData(form)
+		const jsonData = {};
+	
+		for (let [key, value] of formData.entries()) {
+			jsonData[key] = value;
+		}
+		
+		fetch(form.getAttribute("action"), {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(jsonData)
+			})
+			.then(res => res.text())
+			.then(data => {
+				try {
+					let obj = JSON.parse(data)
+					alert(obj.aviso)
+				} catch {
+					return
+				}
+			})
+		window.location.reload();
+	})
+})
+
 
 // evento no botao adicionar 
-let button = document.querySelector(".pageHeader > button")
+let buttonsForm = document.querySelectorAll(".pageHeader > button")
 
+buttonsForm.forEach(button => {
+	button.addEventListener("click", () => {
+		let divs = document.querySelectorAll('.addConteudo')
+		let efect = document.querySelector('.opacidade')
 
-button.addEventListener("click", () => {
-	let div = document.querySelector('.addConteudo')
-	let efect = document.querySelector('.opacidade')
-
-	efect.addEventListener("click", () => {
-		div.style.display = 'none'
-		efect.style.display = 'none'
+		efect.addEventListener("click", () => {
+			divs.forEach(div => {
+				div.style.display = 'none'
+			})
+			efect.style.display = 'none'
+		})
+		divs.forEach(div => {
+			div.style.display = 'flex'
+		})
+		efect.style.display = 'block'
 	})
-	div.style.display = 'flex'
-	efect.style.display = 'block'
 })
+
 
 // evento ingrediente edit e delete
 

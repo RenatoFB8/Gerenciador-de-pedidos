@@ -20,7 +20,6 @@ router.post("/add", (req, res) => {
   let medida = req.body.medida
 
   let preco = valor/quant
-  console.log(preco)
   if(isNaN(preco) == false){
     preco = Number(preco).toFixed(2)
 

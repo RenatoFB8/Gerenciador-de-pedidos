@@ -8,10 +8,12 @@
     <header class="conteiners">
         <%- include('./partials/header') %>
     </header>
+
     <section class="conteiners pageHeader">
-        <h1>Ingredientes</h1>
-        <button>Adicionar</button>
+        <h1>ingredientes</h1>
+        <button>adicionar</button>
     </section>
+
     <section class="conteiners ingredientes">
         <% ingredientes.forEach(ingrediente => { %>
             <% if (ingrediente.medida == "g") { %>
@@ -26,7 +28,7 @@
                 
                 <div>
                     <img src="/src/lapis.png" alt="editar" nome="<%= ingrediente.nome %>">
-                    <form action="/ingredientes/edit" method="post" nome="<%= ingrediente.nome %>">
+                    <form action="/ingredientes/edit" method="post" nome="<%= ingrediente.nome %>" class="">
                         <h3>editar</h3>
                         <input type="hidden" name="nomeAntigo" value="<%= ingrediente.nome %>">
                         <input type="text" name="nomeNovo" placeholder="novo nome">
@@ -52,10 +54,9 @@
     
     <div class="opacidade"></div>
     
-    <section class="addConteudo" id="">
-        <!-- ADD INGREDIENTE -->
+    <section class="addConteudo">
         <h2>adicionar ingrediente</h2>
-        <form action="/ingredientes/add" method="post" id="add-ingrediente">
+        <form action="/ingredientes/add" method="post" class="add">
             <input type="text" name="nome" placeholder="nome">
             <input type="text" name="valor" placeholder="valor">
             <input type="text" name="quantidade" placeholder="quantidade">

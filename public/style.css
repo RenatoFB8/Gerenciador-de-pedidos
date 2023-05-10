@@ -6,14 +6,10 @@
     padding: 0;
     box-sizing: border-box;
     border: none;
-    font-family: 'Inconsolata', monospace;
-    font-family: 'Inter', sans-serif;
-    font-family: 'Poppins', sans-serif;
 }
 
 body {
     background-color: #F6E5C7;
-
 }
 
 .conteiners {
@@ -34,19 +30,18 @@ nav {
 }
 
 .abas {
-    font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
 .abas a {
+    font-family: 'Inter', sans-serif;
     color: #FFFFFF;
     text-decoration: none;
 }
 
 #logo {
-    width: auto;
     height: 55px;
 }
 
@@ -61,20 +56,22 @@ nav {
 }
 
 .pageHeader button{
+    font-family: 'Inter', sans-serif;
     background-color:#887BB0;
     color: #FFFFFF;
     padding: 0 50px;
-    /* font-size: 20px; */
-    font-family: 'Inter', sans-serif;
     box-shadow:4px 6px 6px 0px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     cursor: pointer;
 }
+
 .ingredientes {
     padding-bottom: 50px;
 }
+
 .addConteudo, .ingrediente form {
     background-color: #FFFFFF;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -87,14 +84,12 @@ nav {
     border-radius: 10px;
     padding: 8vh;
     font-family: 'Inconsolata', monospace;
-    display: none;
     z-index: 2;
 }
 
 .addConteudo h2{
     white-space: nowrap;
     text-align: center;
-    /* font-size: 28px; */
     color:#5F4C9A;
     font-weight: 500;
 }
@@ -111,7 +106,6 @@ nav {
     padding: 15px;
     border-radius: 10px;
     width: 100%;
-    /* font-size: 16px; */
 }
 
 .addConteudo form div {
@@ -146,6 +140,7 @@ nav {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 60px;
 }
+
 .ingrediente {
     display: flex;
     flex-direction: column;
@@ -181,55 +176,40 @@ nav {
     justify-content: space-between;
 }
 
-#addProduto{
-
-display: flex;
-
-}
-
 #add-produto{
-
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 30px;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
 
 #addProduto input[type=button]{
-
-color: rgba(0, 0, 0, 0.5);
-text-align: left;
-cursor: pointer;
-
+    color: rgba(0, 0, 0, 0.5);
+    text-align: left;
+    cursor: pointer;
 }
 
 .selecionarIngrediente{
-
-background-color: #D9D9D9;
-padding: 15px;
-border-radius: 10px;
-width: 100%;
-
+    background-color: #D9D9D9;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
 }
 
 .selecionarIngrediente select{
-
-border: none;
-appearance: none;
-width: fit-content;
-color: #5F4C9A;
-background-color: #D9D9D9;
-height: fit-content;
+    border: none;
+    appearance: none;
+    width: fit-content;
+    color: #5F4C9A;
+    background-color: #D9D9D9;
+    height: fit-content;
 }
 
 #adicionarSelect{
-
-background-image: url(/src/mais.png);
-background-repeat: no-repeat;
-background-position-x: calc(100% - 10px);
-background-position-y: center;
-background-size: 25px;
-
+    background-image: url(/src/mais.png);
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+    background-size: 25px;
 }
 
 
