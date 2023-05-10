@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
 router.post("/add", (req, res) => {
   let produto = req.body.produto
   let lucro = req.body.lucro
-//criar e add
+  let ingrediente = 
+
   db.collection("produtos").add({
     produto: produto,
     lucro: lucro

@@ -17,15 +17,14 @@
     <section class="conteiners ingredientes">
         <% ingredientes.forEach(ingrediente => { %>
             <% if (ingrediente.medida == "g") { %>
-                <% ingrediente.preco *= 1000 %>
+                <% ingrediente.preco = (ingrediente.preco * 1000).toFixed(2) %>
                 <% ingrediente.medida = "kg" %>
             <% } else if (ingrediente.medida == "ml") { %>
-                <% ingrediente.preco *= 1000 %>
+                <% ingrediente.preco = (ingrediente.preco * 1000).toFixed(2) %>
                 <% ingrediente.medida = "L" %>
             <% } %>
             <div class="ingrediente" nome="<%= ingrediente.nome %>">
                 <p><%= ingrediente.nome %></p>
-                
                 <div>
                     <img src="/src/lapis.png" alt="editar" nome="<%= ingrediente.nome %>">
                     <form action="/ingredientes/edit" method="post" nome="<%= ingrediente.nome %>" class="">
@@ -53,14 +52,13 @@
     </section>
     
     <div class="opacidade"></div>
-    
     <section class="addConteudo">
         <h2>adicionar ingrediente</h2>
         <form action="/ingredientes/add" method="post" class="add">
             <input type="text" name="nome" placeholder="nome">
             <input type="text" name="valor" placeholder="valor">
             <input type="text" name="quantidade" placeholder="quantidade">
-            <div>
+            <div class="radios">
                 <div>
                     <input id="u" type="radio" name="medida" value="u">
                     <label for="u">unidades</label>

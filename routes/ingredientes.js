@@ -2,15 +2,18 @@ const express = require('express')
 const router = express.Router()
 const db = require("../firebase.js")
 
-router.get('/', (req, res) => {
-  db.collection("ingredientes").get()
-    .then(ingredientes => {
-      let lista = []
-      ingredientes.forEach(ingrediente => {
-        lista.push(ingrediente.data())
-      })
-      res.render("ingredientes", {ingredientes:lista})
-    })
+async function getIngredientes() {
+  let data = await db.collection("ingredientes").get()
+  let lista = data.docs.map(doc => doc.data());
+  return lista
+}
+router.get('/', async (req, res) => {
+  const ingredientes = await getIngredientes();
+  res.render("ingredientes", {ingredientes})
+})
+
+router.get("/get", async (req, res) => {
+  res.send(await getIngredientes())
 })
 
 router.post("/add", (req, res) => {
