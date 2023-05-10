@@ -116,7 +116,7 @@ fetch("/ingredientes/get").then(res => res.json())
 						</label>
 						<div>
 							<input type="number" name="pesos[]" step="0.01" min="0">
-							${ingrediente.medida}
+							<p class ="medidas">${ingrediente.medida}</p>
 						</div>
 					</div> `
 		})

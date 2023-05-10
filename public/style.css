@@ -9,6 +9,26 @@
     color: #5F4C9A;
 }
 
+* {
+    scrollbar-width: 5px;
+    scrollbar-color: #887BB0 transparent;
+  }
+  
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #887BB0;
+    border-radius: 20px;
+    border: 3px solid #887BB0;
+  }
+
 body {
     background-color: #F6E5C7;
 }
@@ -100,7 +120,6 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 13px;
-    width: 600px;
 }
 .addConteudo form > input:not([type=radio]), .ingrediente form input{
     background-color: #D9D9D9;
@@ -197,40 +216,58 @@ nav {
     gap: 10px;
 }
 
+.selecionarIngredientes{
+
+    overflow-x: hidden;
+
+}
 .selecionarIngredientes div {
     display: flex;
     justify-content: space-between;
     gap: 3px;
+    position: relative;
+    align-items: center;
+    
 }
 .selecionarIngredientes div label {
     display: flex;
 
 }
 .selecionarIngredientes input[type="number"] {
-    width: 100%;
+    width: 50px;
     height: 20px;
     background-color: transparent;
     border: 1px solid #5F4C9A;
     border-radius: 6px;
+   
 }
 
-/* .selecionarIngrediente select{
-    border: none;
-    appearance: none;
-    width: fit-content;
-    color: #5F4C9A;
-    background-color: #D9D9D9;
-    height: fit-content;
-} */
 
-/* #adicionarSelect{
-    background-image: url(/src/mais.png);
-    background-repeat: no-repeat;
-    background-position-x: calc(100% - 10px);
-    background-position-y: center;
-    background-size: 25px;
+.prodLarg{
+    width: 600px;
 }
- */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.medidas{
+
+position: absolute;
+left: 100%;
 
 
+}
 
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#valorLucro {
+
+    position: relative;
+    bottom: 15px;
+    left: 5px;
+}
