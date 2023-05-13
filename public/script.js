@@ -96,26 +96,15 @@ icons.forEach(icon => {
 	})
 })
 
-/* <li>
-                    <label>
-                      <input type="checkbox" name="ingredientes[]" value="<%= ingredientes.id %>">
-                      <%= ingredientes[i].nome %>
-                    </label>
-                    <input type="number" name="pesos[]" step="0.01" min="0">
-                    g
-                  </li> */
 let ings = document.querySelector(".selecionarIngredientes")
 fetch("/ingredientes/get").then(res => res.json())
 	.then(data => {
 		let html = ""
 		data.forEach(ingrediente => {
 			html += `<div>
-						<label>
-							<input type="checkbox" name="ingredientes[]" value="${ingrediente.nome}">
-							${ingrediente.nome}
-						</label>
+						<p>${ingrediente.nome}</p>
 						<div>
-							<input type="number" name="pesos[]" step="0.01" min="0">
+							<input type="number" name="${ingrediente.nome}">
 							<p class ="medidas">${ingrediente.medida}</p>
 						</div>
 					</div> `

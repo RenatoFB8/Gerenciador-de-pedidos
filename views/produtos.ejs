@@ -14,14 +14,31 @@
         <button>adicionar</button>
     </section>
 
+    <section class="conteiners">
+        <% produtos.forEach(produto => { %>
+            <div>
+                <!-- mudar esse h1 depois, apenas ilustrativo -->
+                <h1><%= produto.nome %></h1> 
+                <p>lucro: <%= produto.lucro %></p>
+                <ul>
+                    <h4>ingredientes</h4>
+                    <% for(let i in produto.ingredientes) { %>
+                        <li><%= i %> : <%= produto.ingredientes[i] %></li>
+                    <% } %>
+                </ul>
+                
+            </div>
+            
+        <% }) %>
+    </section>
+
     <div class="opacidade"></div>
     
     <section class="addConteudo prodLarg">
         <h2>adicionar produto</h2>
         <form action="/produtos/add" method="post" class="add" id="add-produto">
-            <input type="text" name="produto" placeholder="produto">
+            <input type="text" name="nome" placeholder="nome">
             <div class="selecionarIngredientes"></div>
-            <!-- <input type="button" value="ingrediente" id="adicionarSelect"> -->
             <input type="text" name="lucro" placeholder="lucro em %">
             <p id="valorLucro">Valor:</p>
             <input type="submit" value="adicionar"> 
