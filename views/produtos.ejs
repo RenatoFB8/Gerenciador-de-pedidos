@@ -14,18 +14,22 @@
         <button>adicionar</button>
     </section>
 
-    <section class="conteiners">
+    <section class="conteiners produtos">
         <% produtos.forEach(produto => { %>
-            <div>
+            <div class="produto">
                 <!-- mudar esse h1 depois, apenas ilustrativo -->
                 <h1><%= produto.nome %></h1> 
+                <h4>ingredientes</h4>
+                <div class ="listaIngredientes">
+                    <ul>
+                     
+                        <% for(let i in produto.ingredientes) { %>
+                            <li><%= i %> : <%= produto.ingredientes[i] %></li>
+                        <% } %>
+                    </ul>
+                </div>
                 <p>lucro: <%= produto.lucro %></p>
-                <ul>
-                    <h4>ingredientes</h4>
-                    <% for(let i in produto.ingredientes) { %>
-                        <li><%= i %> : <%= produto.ingredientes[i] %></li>
-                    <% } %>
-                </ul>
+           
                 
             </div>
             
