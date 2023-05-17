@@ -17,7 +17,13 @@
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
     width: 5px;
+    height: 7px;
 }
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
 
 *::-webkit-scrollbar-track {
     background: transparent;
@@ -305,6 +311,7 @@ input[type=number] {
     width: 100%;
     justify-content: space-between;
 }
+
 .produto ul{
     list-style: none;
  
@@ -325,4 +332,74 @@ input[type=number] {
     border-radius: 6px;
     height: 100px;
     width: 130px;
+}
+
+.produto h4{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#lucro{
+    margin-top: 10px;
+}
+
+#add-pedido{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#add-pedido .selecionarProdutos {
+    display: flex;
+    flex-direction: column;
+    grid-row-end: span 2;
+    background-color: #D9D9D9;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-y: auto;
+    height: 120px;
+    gap: 10px;
+}
+
+.selecionarProdutos{
+    overflow:scroll;
+}
+.selecionarProdutos div {
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
+    position: relative;
+    align-items: center;
+    
+}
+.selecionarProdutos div label {
+    display: flex;
+}
+.selecionarProdutos input[type="number"] {
+    width: 30px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid #5F4C9A;
+    border-radius: 6px;
+}
+
+#valorPedido {
+    position: relative;
+    bottom: 15px;
+    left: 5px;
+}
+
+#add-pedido input[type="date"]{
+    height: 46px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.selecionarProdutos > div{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.selecionarProdutos > div > div{
+    width: 50px;
 }

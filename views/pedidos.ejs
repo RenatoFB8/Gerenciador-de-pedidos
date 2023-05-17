@@ -8,5 +8,64 @@
     <header class="conteiners">
         <%- include('./partials/header') %>
     </header>
+    <section class="conteiners pageHeader">
+        <h1>pedidos</h1>
+        <button>adicionar</button>
+    </section>
+
+    <div class="opacidade"></div>
+    
+    <section class="addConteudo prodLarg">
+        <h2>adicionar pedido</h2>
+        <form action="/pedidos/add" method="post" class="add" id="add-pedido">
+            <input type="text" name="cliente" placeholder="Cliente">
+            <input type="text" placeholder="Telefone">
+            <input type="date" name="data">
+            <div class="selecionarProdutos">
+                <div>
+                    <p>bolo</p>
+                    <div>
+                        <input type="number">
+                        <p>4</p>
+                    </div>
+                </div>
+                <div>
+                    <p>ovodeChoco</p>
+                    <div>
+                        <input type="number">
+                        <p>12,50R$</p>
+                    </div>
+                </div>
+                <div>
+                    <p>banano</p>
+                    <div>
+                        <input type="number">
+                        <p>4</p>
+                    </div>
+                </div>
+                <div>
+                    <p>ovodeChoco</p>
+                    <div>
+                        <input type="number">
+                        <p>12,50R$</p>
+                    </div>
+                </div>
+                <div>
+                    <p>ovodeChoco</p>
+                    <div>
+                        <input type="number">
+                        <p>12,50R$</p>
+                    </div>
+                </div>
+                
+            </div>
+            <input type="submit" value="adicionar">
+            <p id="valorPedido">Valor:</p>
+        </form>
+        
+        </section>
+    <script src="/script.js"></script>
 </body>
+
+
 </html>
