@@ -23,11 +23,32 @@ router.post("/add", (req, res) => {
     }
   }
 
-  db.collection("produtos").doc(nome).set({
-    nome,
-    lucro,
-    ingredientes
+  db.collection("produtos").doc(nome).set({nome, lucro, ingredientes})
+  res.redirect("/produtos")
+})
+
+router.get("/edit", (req, res) => {
+  let nome = req.body.nome
+
+  db.collection('produtos').doc(nome).get()
+  .then(doc => {
+    res.send(doc.data())
   })
+  res.end()
+})
+
+router.post("/edit", (req, res) => {
+  db.collection("produtos").doc(req.body.nomeAntigo).get()
+  .then(data => {
+    db.collection("produtos").doc(req.body.nomeNovo).set({nome:req.body.nomeNovo, lucro:req.body.lucro, ingredientes:req.body.ingredientes})
+    db.collection("produtos").doc(req.body.nomeAntigo).delete()
+  })
+  res.redirect("/produtos")   
+})
+
+router.post("/delete", (req, res) => {
+  let nome = req.body.nome
+  db.collection("produtos").doc(nome).delete()
   res.redirect("/produtos")
 })
 

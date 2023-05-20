@@ -51,7 +51,6 @@ router.post("/edit", (req, res) => {
       db.collection("ingredientes").doc(nomeAntigo).delete()
     })
   res.redirect("/ingredientes")
-
 })
 
 router.post("/delete", (req, res) => {
