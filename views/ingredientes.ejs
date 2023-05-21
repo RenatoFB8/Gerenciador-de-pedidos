@@ -41,9 +41,10 @@
                     <img src="/src/lixo.png" alt="deletar" nome="<%= ingrediente.nome %>">
                     <form action="/ingredientes/delete" method="post" nome="<%= ingrediente.nome %>">
                         <h3>Deseja mesmo apagar?</h3>
+                        <input type="submit" value="sim">
                         <input type="hidden" name="nome" value="<%= ingrediente.nome %>">
                         <button>não</button>
-                        <input type="submit" value="sim">
+                       
                     </form>
                 </div>
                

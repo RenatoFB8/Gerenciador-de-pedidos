@@ -96,7 +96,7 @@ nav {
     padding-bottom: 50px;
 }
 
-.addConteudo, .ingrediente form {
+.addConteudo, .ingrediente form, .produto form, .pedido form {
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
@@ -127,7 +127,7 @@ nav {
     flex-direction: column;
     gap: 13px;
 }
-.addConteudo form > input:not([type=radio]), .ingrediente form input{
+.addConteudo form > input:not([type=radio]), .ingrediente form input, .produto form input, .pedido form input{
     background-color: #D9D9D9;
     padding: 15px;
     border-radius: 10px;
@@ -144,7 +144,7 @@ nav {
     gap: 5px;
 }
 
-.addConteudo form input[type=submit], .ingrediente form input[type="submit"]{
+.addConteudo form input[type=submit], .ingrediente form input[type="submit"], .produto form input[type="submit"], .pedido form input[type="submit"]{
     background-color: #887BB0;
     color: #ffffff;
     cursor: pointer;
@@ -167,7 +167,7 @@ nav {
     gap: 60px;
 }
 
-.ingrediente {
+.ingrediente, .produto, .pedido{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,15 +179,15 @@ nav {
     min-height: 60px;
     padding: 8px 16px;
 }
-.ingrediente img {
+.ingrediente img, .produto img, .pedido img {
     height: 20px;
     cursor: pointer;
 }
-.ingrediente form h3 {
+.ingrediente form h3, .produto form h3, .pedido form h3 {
     margin-bottom: 15px;
     font-weight: 500;
 }
-.ingrediente form button {
+.ingrediente form button, .produto form button, .pedido form button {
     padding: 15px;
     border-radius: 10px;
     width: 100%;
@@ -196,18 +196,18 @@ nav {
     cursor: pointer;
 }
 
-.ingrediente div {
+.ingrediente div, .produto div, .pedido div {
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
 
-#add-produto{
+#add-produto, #add-pedido{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
-#add-produto input[type=submit] {
+#add-produto input[type=submit], .editar-produto input[type=submit]{
     grid-column-end: span 2;
 }
 #add-produto .selecionarIngredientes {
@@ -277,41 +277,6 @@ input[type=number] {
     gap: 60px;
 }
 
-.produto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #D9D9D9;
-    box-shadow: 0 0 0 7px #5F4C9A;
-    border-radius: 10px;
-    color: #5F4C9A;
-    min-height: 60px;
-    padding: 8px 16px;
-}
-.produto img {
-    height: 20px;
-    cursor: pointer;
-}
-.produto form h3 {
-    margin-bottom: 15px;
-    font-weight: 500;
-}
-.produto form button {
-    padding: 15px;
-    border-radius: 10px;
-    width: 100%;
-    border: 1px solid #887BB0;
-    color: #887BB0;
-    cursor: pointer;
-}
-
-.produto div {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
 .produto ul{
     list-style: none;
  
@@ -343,11 +308,6 @@ input[type=number] {
     margin-top: 10px;
 }
 
-#add-pedido{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
 
 #add-pedido .selecionarProdutos {
     display: flex;
@@ -402,4 +362,13 @@ input[type=number] {
 
 .selecionarProdutos > div > div{
     width: 50px;
+}
+
+.editar-produto{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.editar-produto h3{
+    display: inline-block;
 }

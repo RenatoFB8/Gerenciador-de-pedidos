@@ -13,13 +13,42 @@
         <button>adicionar</button>
     </section>
 
+     <div class="pedido">
+
+       <p><%= pedido.nome %></p>
+        <div>
+            <img src="/src/lapis.png" alt="editar" nome="<%= pedido.nome %>">
+            <form action="/pedidos/edit" method="post" nome="<%= pedido.nome %>" class="">
+                <h3>editar</h3>
+                <input type="hidden" name="nomeAntigo" value="<%= pedido.nome %>">
+                <input type="text" name="nomeNovo" placeholder="novo nome">
+                <input type="hidden" name="valorAntigo" value="<%= pedido.nome %>">
+                <input type="text" name="valorNovo" placeholder="novo preço">
+                <input type="submit" value="editar">
+            </form> 
+
+             <p id="valor">R$ </p>
+
+                    <img src="/src/lixo.png" alt="deletar" nome="<%= pedido.nome %>"> 
+                    <form action="/pedidos/delete" method="post" nome="<%= pedido.nome %>">
+                        <h3>Deseja mesmo apagar?</h3>
+                        <input type="submit" value="sim">
+                        <input type="hidden" name="nome" value="<%= pedido.nome %>">
+                        <button>não</button>
+                       
+                    </form> 
+        </div> 
+
+
+    </div> 
+
     <div class="opacidade"></div>
     
     <section class="addConteudo prodLarg">
         <h2>adicionar pedido</h2>
         <form action="/pedidos/add" method="post" class="add" id="add-pedido">
-            <input type="text" name="cliente" placeholder="Cliente">
-            <input type="text" placeholder="Telefone">
+            <input type="text" name="cliente" placeholder="cliente">
+            <input type="text" placeholder="telefone">
             <input type="date" name="data">
             <div class="selecionarProdutos">
                 <div>

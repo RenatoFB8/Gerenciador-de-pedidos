@@ -96,6 +96,8 @@ icons.forEach(icon => {
 	})
 })
 
+
+
 let ings = document.querySelector(".selecionarIngredientes")
 fetch("/ingredientes/get").then(res => res.json())
 	.then(data => {
