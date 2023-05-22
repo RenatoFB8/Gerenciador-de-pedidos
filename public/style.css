@@ -92,10 +92,6 @@ nav {
     cursor: pointer;
 }
 
-.ingredientes {
-    padding-bottom: 50px;
-}
-
 .addConteudo, .ingrediente form, .produto form, .pedido form {
     background-color: #FFFFFF;
     display: flex;
@@ -161,7 +157,7 @@ nav {
     display: none;
 }
 
-.ingredientes {
+.ingredientes, .produtos, .pedidos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 60px;
@@ -271,19 +267,15 @@ input[type=number] {
     left: 5px;
 }
 
-.produtos {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
-}
 
-.produto ul{
+
+.produto ul, .pedido ul{
     list-style: none;
  
     
 }
 
-.produto li{
+.produto li, .pedido li{
    padding: 3px;
    padding-left: 10px;
    max-width: 140px;
@@ -291,7 +283,7 @@ input[type=number] {
    
 }
 
-.listaIngredientes{
+.listaIngredientes, .listaProdutos{
     border:#887BB0 2px solid;
     overflow-y: auto;
     border-radius: 6px;
@@ -299,7 +291,7 @@ input[type=number] {
     width: 130px;
 }
 
-.produto h4{
+.produto h4, .pedido h4{
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -371,4 +363,8 @@ input[type=number] {
 
 .editar-produto h3{
     display: inline-block;
+}
+
+#telefone{
+    margin-top: 10px;
 }
