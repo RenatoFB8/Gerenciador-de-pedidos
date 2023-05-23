@@ -98,8 +98,10 @@ icons.forEach(icon => {
 
 
 
-let ings = document.querySelector(".selecionarIngredientes")
-fetch("/ingredientes/get").then(res => res.json())
+let ings = document.querySelectorAll(".selecionarIngredientes")
+ings.forEach(ings => {
+	
+	fetch("/ingredientes/get").then(res => res.json())
 	.then(data => {
 		let html = ""
 		data.forEach(ingrediente => {
@@ -114,4 +116,5 @@ fetch("/ingredientes/get").then(res => res.json())
 		ings.innerHTML = html
 	}
 )
+})
 

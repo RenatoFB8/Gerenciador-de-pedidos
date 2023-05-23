@@ -34,15 +34,17 @@
                 <div>
                     <img src="/src/lapis.png" alt="editar" nome="<%= produto.nome %>">
                     
-                    <form action="/produtos/edit" method="post" nome="<%= produto.nome %>" class="editar-produto">
+                    <form action="/produtos/edit" method="post" nome="<%= produto.nome %>" class="prodLarg">
+                        
                         <h3>editar</h3>
+                        <section class="editar-produto">
                         <input type="hidden" name="nomeAntigo" value="<%= produto.nome %>">
                         <input type="text" name="nomeNovo" placeholder="novo nome">
+                        <div class="selecionarIngredientes"></div>
                         <input type="hidden" name="lucroAntigo" value="<%= produto.nome %>">
                         <input type="text" name="lucroNovo" placeholder="novo lucro">
-                        <!-- <div class="selecionarIngredientes"></div> -->
-
                         <input type="submit" value="editar">
+                        </section>
                     </form>
 
                     <p id="valor">R$ </p>

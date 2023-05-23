@@ -123,7 +123,7 @@ nav {
     flex-direction: column;
     gap: 13px;
 }
-.addConteudo form > input:not([type=radio]), .ingrediente form input, .produto form input, .pedido form input{
+.addConteudo form > input:not([type=radio]), .ingrediente form input, .produto form input:not([type = number]), .pedido form input:not([type = number]){
     background-color: #D9D9D9;
     padding: 15px;
     border-radius: 10px;
@@ -192,7 +192,7 @@ nav {
     cursor: pointer;
 }
 
-.ingrediente div, .produto div, .pedido div {
+.ingrediente div, .produto div:not(.selecionarIngredientes div), .pedido div:not(.selecionarProdutos div)  {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -203,7 +203,7 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
-#add-produto input[type=submit], .editar-produto input[type=submit]{
+#add-produto input[type=submit], .editar-produto input[type=submit] , .editar-pedido input[type=submit] {
     grid-column-end: span 2;
 }
 #add-produto .selecionarIngredientes {
@@ -243,7 +243,7 @@ nav {
 }
 
 .prodLarg{
-    width: 600px;
+    width: 650px;
 }
 
 input::-webkit-outer-spin-button,
@@ -301,7 +301,7 @@ input[type=number] {
 }
 
 
-#add-pedido .selecionarProdutos {
+.selecionarProdutos {
     display: flex;
     flex-direction: column;
     grid-row-end: span 2;
@@ -314,7 +314,7 @@ input[type=number] {
 }
 
 .selecionarProdutos{
-    overflow:scroll;
+    overflow-x:scroll;
 }
 .selecionarProdutos div {
     display: flex;
@@ -322,7 +322,6 @@ input[type=number] {
     gap: 3px;
     position: relative;
     align-items: center;
-    
 }
 .selecionarProdutos div label {
     display: flex;
@@ -356,15 +355,32 @@ input[type=number] {
     width: 50px;
 }
 
-.editar-produto{
+.editar-produto , .editar-pedido{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    
 }
 
-.editar-produto h3{
-    display: inline-block;
+.editar-produto .selecionarIngredientes, .editar-pedido .selecionarProdutos{
+    display: flex;
+    flex-direction: column;
+    grid-row-end: span 2;
+    background-color: #D9D9D9;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-y: auto;
+    height: 120px;
+    gap: 10px;
 }
+
 
 #telefone{
     margin-top: 10px;
 }
+
+.selecionarProdutos > div > p {
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
