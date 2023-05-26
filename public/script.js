@@ -1,7 +1,7 @@
 document.querySelectorAll('.addConteudo').forEach(div => {
 	div.style.display = 'none'
 })
-document.querySelectorAll('.ingrediente form').forEach(div => {
+document.querySelectorAll('.ingrediente form, .produto form, .pedido form').forEach(div => {
 	div.style.display = 'none'
 })
 
@@ -63,11 +63,11 @@ buttonsForm.forEach(button => {
 
 // evento ingrediente edit e delete
 
-let icons = document.querySelectorAll(".ingrediente div img")
+let icons = document.querySelectorAll(".ingrediente div img, .produto div img, .pedido div img")
 icons.forEach(icon => {
 	icon.addEventListener("click", () => {
-		let editForm = document.querySelector(`img[nome='${icon.getAttribute("nome")}'] + form[action="/ingredientes/edit"]`)
-		let deleteForm = document.querySelector(`img[nome='${icon.getAttribute("nome")}'] + form[action="/ingredientes/delete"]`)
+		let editForm = document.querySelector(`img[nome='${icon.getAttribute("nome")}'] + form[action$="edit"]`)
+		let deleteForm = document.querySelector(`img[nome='${icon.getAttribute("nome")}'] + form[action$="delete"]`)
 		let efect = document.querySelector('.opacidade')
 
 		// clicar fora da tela fecha o form

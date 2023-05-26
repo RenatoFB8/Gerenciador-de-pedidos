@@ -192,7 +192,7 @@ nav {
     cursor: pointer;
 }
 
-.ingrediente div, .produto div:not(.selecionarIngredientes div), .pedido div:not(.selecionarProdutos div)  {
+.ingrediente div, .produto > div:not(.selecionarIngredientes div), .pedido > div:not(.selecionarProdutos div)  {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -355,11 +355,10 @@ input[type=number] {
     width: 50px;
 }
 
-.editar-produto , .editar-pedido{
+.editar-produto, .editar-pedido {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    
 }
 
 .editar-produto .selecionarIngredientes, .editar-pedido .selecionarProdutos{
