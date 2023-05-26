@@ -14,21 +14,20 @@
     </section>
 
     <section class="conteiners pedidos">
-        <div class="pedido">
-            <h1>cliente dario</h1>
-            <h4>Data</h4>
+        <% pedidos.forEach(pedido => { %>
+         <div class="pedido">
+            <h1><%= pedido.cliente %></h1>
+            <h4><%= pedido.data %></h4>
             <h4>produtos</h4>
             <div class="listaProdutos">
                 <ul>
-                    <li>bolo</li>
-                    <li>bolo</li>
-                    <li>bolo</li>
-                    <li>bolo</li>
-                    <li>bolo</li>
+                    <% for(let i in pedido.produtos) { %>
+                        <li><%= i %>: <%= pedido.produtos[i] %></li>
+                    <% } %>
                 </ul>
             </div>
 
-            <p id ="telefone">telefone</p>
+            <p id="telefone"><%= pedido.telefone %></p>
 
             <div>
                 <img src="/src/lapis.png" alt="editar" nome="">
@@ -42,26 +41,9 @@
                         <div>
                             <p>bolo de chocolate</p>
                             <div>
-                                <input type="number">
+                                <input type="number" name="bolo">
                                 <p>R$4,50</p>
                             </div>
-                        </div>
-                        <div>
-                            <p>banana do atlantico sulbanana do atlantico sul</p>
-                            <div>
-                                <input type="number">
-                                <p>R$12,50</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                            <p>Bolo de macaxeira c/ chocolate</p>
-                             </div>
-                             <div>
-                                <input type="number">
-                                <p>R$15,00</p>
-                             </div>
-
                         </div>
                     </div>
                     <input type="hidden" name="lucroAntigo" value="">
@@ -75,17 +57,19 @@
             
 
                 <img src="/src/lixo.png" alt="deletar" nome="">
-                <!-- <form action="/pedidos/delete" method="post" nome="">
+                <form action="/pedidos/delete" method="post" nome="">
                     <h3>Deseja mesmo apagar?</h3>
                     <input type="submit" value="sim">
                     <input type="hidden" name="nome" value="">
                     <button>não</button>
                    
-                </form> -->
+                </form>
             </div>
 
 
         </div>
+        <% }) %>
+        
 
 
     </section>
@@ -98,53 +82,24 @@
         <h2>adicionar pedido</h2>
         <form action="/pedidos/add" method="post" class="add" id="add-pedido">
             <input type="text" name="cliente" placeholder="cliente">
-            <input type="text" placeholder="telefone">
+            <input type="text" placeholder="telefone" name="telefone">
             <input type="date" name="data">
             <div class="selecionarProdutos">
                 <div>
                     <p>bolo</p>
                     <div>
-                        <input type="number">
+                        <input type="number" name="bolo">
                         <p>4</p>
                     </div>
-                </div>
-                <div>
-                    <p>ovodeChoco</p>
-                    <div>
-                        <input type="number">
-                        <p>12,50R$</p>
-                    </div>
-                </div>
-                <div>
-                    <p>banano</p>
-                    <div>
-                        <input type="number">
-                        <p>4</p>
-                    </div>
-                </div>
-                <div>
-                    <p>ovodeChoco</p>
-                    <div>
-                        <input type="number">
-                        <p>12,50R$</p>
-                    </div>
-                </div>
-                <div>
-                    <p>ovodeChoco</p>
-                    <div>
-                        <input type="number">
-                        <p>12,50R$</p>
-                    </div>
-                </div>
-                
+                </div>         
             </div>
             <input type="submit" value="adicionar">
             <p id="valorPedido">Valor:</p>
         </form>
         
         </section>
+        
     <script src="/script.js"></script>
 </body>
-
 
 </html>
