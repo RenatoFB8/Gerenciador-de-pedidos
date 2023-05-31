@@ -17,13 +17,14 @@ router.post("/add", (req, res) => {
   let cliente = req.body.cliente
   let telefone = req.body.telefone
   let data = req.body.data
+  
   let produtos = {}
   for (let i in req.body) {
     if (req.body[i]!=cliente && req.body[i]!=telefone && req.body[i]!="" && req.body[i]!=data) {
       produtos[i] = req.body[i]
     }
   }
-  db.collection("pedidos").doc(cliente).set({cliente, telefone, data, produtos})
+  db.collection("pedidos").doc(cliente).set({cliente, telefone, data:`${data.split("-")[2]}/${data.split("-")[1]}/${data.split("-")[0]}`, produtos})
   res.redirect("/pedidos")
 })
 

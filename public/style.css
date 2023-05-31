@@ -261,11 +261,7 @@ input[type=number] {
     left: 100%;
 }
 
-#valorLucro {
-    position: relative;
-    bottom: 15px;
-    left: 5px;
-}
+
 
 
 
@@ -296,7 +292,7 @@ input[type=number] {
     margin-bottom: 5px;
 }
 
-#lucro{
+.lucro{
     margin-top: 10px;
 }
 
@@ -334,7 +330,7 @@ input[type=number] {
     border-radius: 6px;
 }
 
-#valorPedido {
+.valorPedido, .valorLucro {
     position: relative;
     bottom: 15px;
     left: 5px;
@@ -374,8 +370,9 @@ input[type=number] {
 }
 
 
-#telefone{
+.telefone{
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .selecionarProdutos > div > p {

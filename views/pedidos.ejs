@@ -27,7 +27,7 @@
                 </ul>
             </div>
 
-            <p id="telefone"><%= pedido.telefone %></p>
+            <p class="telefone"><%= pedido.telefone %></p>
 
             <div>
                 <img src="/src/lapis.png" alt="editar" nome="<%= pedido.cliente %>">
@@ -52,7 +52,7 @@
                     </div>
                 </form>
 
-                <p id="valor"> R$ </p>
+                <p> R$ 800 </p>
 
                 <img src="/src/lixo.png" alt="deletar" nome="<%= pedido.cliente %>">
                 <form action="/pedidos/delete" method="post">
@@ -83,7 +83,7 @@
             <input type="date" name="data">
             <div class="selecionarProdutos"></div>
             <input type="submit" value="adicionar">
-            <p id="valorPedido">Valor:</p>
+            <p class="valorPedido">Valor:</p>
         </form>
         
         </section>
