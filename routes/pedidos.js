@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.post("/add", (req, res) => {
   let cliente = req.body.cliente
   let telefone = req.body.telefone
-  let data = String(req.body.data)
+  let data = req.body.data
   let produtos = {}
   for (let i in req.body) {
     if (req.body[i]!=cliente && req.body[i]!=telefone && req.body[i]!="" && req.body[i]!=data) {
@@ -30,7 +30,7 @@ router.post("/add", (req, res) => {
 router.get("/edit", (req, res) => {
   let nome = req.body.nome
 
-  db.collection('produtos').doc(nome).get()
+  db.collection('pedidos').doc(nome).get()
   .then(doc => {
     res.send(doc.data())
   })
@@ -38,23 +38,23 @@ router.get("/edit", (req, res) => {
 })
 
 router.post("/edit", (req, res) => {
+  let nomeAntigo = req.body.nomeAntigo
   let cliente = req.body.cliente
   let telefone = req.body.telefone
   let data = req.body.data
-  let produtos = req.body.produtos
+  let produtos = {}
 
-  db.collection("produtos").doc(req.body.nomeAntigo).get()
-  .then(data => {
-    db.collection("produtos").doc(cliente).delete()
-    db.collection("produtos").doc(cliente).set({cliente, telefone, data, produtos})
-  })
-  res.redirect("/produtos")   
+  db.collection("pedidos").doc(nomeAntigo).delete()
+  db.collection("pedidos").doc(cliente).set({cliente, telefone, data, produtos})
+
+  res.redirect("/pedidos")   
 })
 
 router.post("/delete", (req, res) => {
-  let cliente = req.body.cliente
-  db.collection("produtos").doc(cliente).delete()
-  res.redirect("/produtos")
+  let cliente = req.body.nome
+
+  db.collection("pedidos").doc(cliente).delete()
+  res.redirect("/pedidos")
 })
 
 module.exports = router

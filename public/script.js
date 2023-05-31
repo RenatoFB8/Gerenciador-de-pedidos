@@ -1,3 +1,4 @@
+
 document.querySelectorAll('.addConteudo').forEach(div => {
 	div.style.display = 'none'
 })
@@ -99,8 +100,7 @@ icons.forEach(icon => {
 
 
 let ings = document.querySelectorAll(".selecionarIngredientes")
-ings.forEach(ings => {
-	
+ings.forEach(ing => {
 	fetch("/ingredientes/get").then(res => res.json())
 	.then(data => {
 		let html = ""
@@ -113,7 +113,25 @@ ings.forEach(ings => {
 						</div>
 					</div> `
 		})
-		ings.innerHTML = html
+		ing.innerHTML = html
+	}
+)
+})
+let produtos = document.querySelectorAll(".selecionarProdutos")
+produtos.forEach(produto => {
+	fetch("/produtos/get").then(res => res.json())
+	.then(data => {
+		let html = ""
+		data.forEach(produto => {
+			html += `<div>
+						<p>${produto.nome}</p>
+						<div>
+							<input type="number" name="${produto.nome}">
+							<p>${produto.preco}</p>
+						</div>
+					</div> `
+		})
+		produto.innerHTML = html
 	}
 )
 })

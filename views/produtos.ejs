@@ -32,22 +32,24 @@
                 <div>
                     <img src="/src/lapis.png" alt="editar" nome="<%= produto.nome %>">
                     
-                    <form action="/produtos/edit" method="post" nome="<%= produto.nome %>" class="prodLarg">
+                    <form action="/produtos/edit" method="post" class="prodLarg">
                         <h3>editar</h3>
                         <div class="editar-produto">
                             <input type="hidden" name="nomeAntigo" value="<%= produto.nome %>">
-                            <input type="text" name="nomeNovo" placeholder="novo nome">
-                            <div class="selecionarIngredientes"></div>
+                            <input type="text" name="nome" placeholder="nome" value="<%= produto.nome %>">
+                            <div class="selecionarIngredientes">
+
+                            </div>
                             <input type="hidden" name="lucroAntigo" value="<%= produto.nome %>">
-                            <input type="text" name="lucroNovo" placeholder="novo lucro">
+                            <input type="text" name="lucroNovo" placeholder="lucro" value="<%= produto.lucro %>">
                             <input type="submit" value="editar">
                         </div>
                     </form>
 
-                    <p id="valor">R$ </p>
+                    <p id="valor">R$ <%= produto.preco %></p>
 
                     <img src="/src/lixo.png" alt="deletar" nome="<%= produto.nome %>">
-                    <form action="/produtos/delete" method="post" nome="<%= produto.nome %>">
+                    <form action="/produtos/delete" method="post">
                         <h3>Deseja mesmo apagar?</h3>
                         <input type="submit" value="sim">
                         <input type="hidden" name="nome" value="<%= produto.nome %>">
