@@ -6,8 +6,9 @@ document.querySelectorAll('.ingrediente form, .produto form, .pedido form').forE
 	div.style.display = 'none'
 })
 
-const forms = document.querySelectorAll('.add')
 
+// para receber o aviso do backend
+const forms = document.querySelectorAll('.add')
 forms.forEach(form => {
 	form.addEventListener('submit', (event) => {
 		event.preventDefault()
@@ -98,7 +99,7 @@ icons.forEach(icon => {
 })
 
 
-
+// Selecionar ingredientes em produtos
 let ings = document.querySelectorAll(".selecionarIngredientes")
 ings.forEach(ing => {
 	fetch("/ingredientes/get").then(res => res.json())
@@ -117,6 +118,8 @@ ings.forEach(ing => {
 	}
 )
 })
+
+// Selecionar produtos em pedidos
 let produtos = document.querySelectorAll(".selecionarProdutos")
 produtos.forEach(produto => {
 	fetch("/produtos/get").then(res => res.json())

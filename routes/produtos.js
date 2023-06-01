@@ -17,51 +17,71 @@ router.get("/get", async (req, res) => {
 })
 
 router.post("/add", async (req, res) => {
-  let nome = req.body.nome;
-  let lucro = req.body.lucro;
-  let ingredientes = {};
-  let ingredientesPromises = [];
+  let nome = req.body.nome
+  let lucro = req.body.lucro
+  let ingredientes = {}
+  let ingredientesPromises = []
 
   for (let i in req.body) {
-    if (req.body[i] != nome && req.body[i] != lucro && req.body[i] != "") {
+    if (i!="nome" && i!="lucro" && req.body[i]!="") {
       const promise = db.collection("ingredientes").doc(i).get()
         .then(doc => {
           if (doc.exists) {
-            const preco = Number(doc.data().preco);
-            ingredientes[i] = [req.body[i], Number(req.body[i]) * preco];
+            const preco = Number(doc.data().preco)
+            ingredientes[i] = [req.body[i], Number(req.body[i]) * preco]
           }
-        });
-
-      ingredientesPromises.push(promise);
+        })
+      ingredientesPromises.push(promise)
     }
   }
 
-  await Promise.all(ingredientesPromises);
-  
-  let preco = Object.values(ingredientes).reduce((acc, ingredientes) => acc + ingredientes[1], 0);
+  await Promise.all(ingredientesPromises)
 
-  db.collection("produtos").doc(nome).set({ nome, lucro, ingredientes, preco});
-  res.redirect("/produtos");
-});
+  let preco = Object.values(ingredientes).reduce((acc, ingredientes) => acc + ingredientes[1], 0)
+  let precoFinal = preco + preco * Number(lucro)/100
 
-
-router.get("/edit", (req, res) => {
-  let nome = req.body.nome
-
-  db.collection('produtos').doc(nome).get()
-  .then(doc => {
-    res.send(doc.data())
-  })
-  res.end()
+  db.collection("produtos").doc(nome).set({ nome, lucro, ingredientes, preco:precoFinal})
+  res.redirect("/produtos")
 })
 
-router.post("/edit", (req, res) => {
-  db.collection("produtos").doc(req.body.nomeAntigo).get()
+router.post("/edit", async (req, res) => {
+  let nomeAntigo = req.body.nomeAntigo
+  let nome = req.body.nome
+  let lucro = req.body.lucro
+  let ingredientes = {} 
+  let ingredientesPromises = []
+
+  for (let i in req.body) {
+    if (i!="nome" && i!="nomeAntigo" && i!="lucro" && req.body[i]!="") {
+      const promise = db.collection("ingredientes").doc(i).get()
+        .then(doc => {
+          if (doc.exists) {
+            const preco = Number(doc.data().preco)
+            ingredientes[i] = [req.body[i], Number(req.body[i]) * preco]
+          }
+        })
+      ingredientesPromises.push(promise)
+    }
+  }
+
+  await Promise.all(ingredientesPromises)
+
+  let preco = Object.values(ingredientes).reduce((acc, ingredientes) => acc + ingredientes[1], 0)
+  let precoFinal = preco + preco * Number(lucro)/100
+
+  db.collection("produtos").doc(nomeAntigo).get()
   .then(data => {
-    db.collection("produtos").doc(req.body.nomeNovo).set({nome:req.body.nomeNovo, lucro:req.body.lucro, ingredientes:req.body.ingredientes})
-    db.collection("produtos").doc(req.body.nomeAntigo).delete()
+    if (data.exists) {
+      db.collection("produtos").doc(nomeAntigo).delete()
+        .then(() => {
+          db.collection("produtos").doc(nome).set({ nome, lucro, ingredientes, preco:precoFinal })
+            .then(() => {
+              res.redirect("/produtos");
+            })
+        })
+    }
   })
-  res.redirect("/produtos")   
+
 })
 
 router.post("/delete", (req, res) => {
