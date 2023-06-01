@@ -21,14 +21,13 @@
                 <h4>ingredientes</h4>
                 <div class ="listaIngredientes">
                     <ul>
-                        <% for(let i in produto.ingredientes) { %>
-                            <li><%= i %>: <%= produto.ingredientes[i] %></li>
+                        <% for(let [ingrediente, valor] of Object.entries(produto.ingredientes))  { %>
+                            <li><%= ingrediente %>: <%= valor[1] %> > R$<%= valor[0] %></li>
                         <% } %>
                     </ul>
                 </div>
                 <p class="lucro">lucro: <%= produto.lucro %>%</p>
                 
-
                 <div>
                     <img src="/src/lapis.png" alt="editar" nome="<%= produto.nome %>">
                     <form action="/produtos/edit" method="post" class="prodLarg">
@@ -36,13 +35,23 @@
                         <div class="editar-produto">
                             <input type="hidden" name="nomeAntigo" value="<%= produto.nome %>">
                             <input type="text" name="nome" placeholder="nome" value="<%= produto.nome %>">
-                            <div class="selecionarIngredientes"></div>
+                            <div class="selecionarIngredientes">
+                                <% for (let [ingrediente, valor] of Object.entries(produto.ingredientes)) { %>
+                                    <div>
+                                        <p><%= ingrediente %></p>
+                                        <div>
+                                            <input type="number" name="<%= ingrediente %>" value="<%= valor[0] %>">
+                                        </div>
+                                    </div>
+                                <% } %>
+                                
+                            </div>
                             <input type="text" name="lucro" placeholder="lucro" value="<%= produto.lucro %>">
                             <input type="submit" value="editar">
                         </div>
                     </form>
 
-                    <p>R$ <%= produto.preco %></p>
+                    <p>R$<%= produto.preco %></p>
 
                     <img src="/src/lixo.png" alt="deletar" nome="<%= produto.nome %>">
                     <form action="/produtos/delete" method="post">

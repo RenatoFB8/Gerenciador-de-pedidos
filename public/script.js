@@ -99,25 +99,29 @@ icons.forEach(icon => {
 })
 
 
-// Selecionar ingredientes em produtos
-let ings = document.querySelectorAll(".selecionarIngredientes")
+let ings = document.querySelectorAll(".selecionarIngredientes");
 ings.forEach(ing => {
-	fetch("/ingredientes/get").then(res => res.json())
-	.then(data => {
-		let html = ""
-		data.forEach(ingrediente => {
-			html += `<div>
-						<p>${ingrediente.nome}</p>
-						<div>
-							<input type="number" name="${ingrediente.nome}">
-							<p class ="medidas">${ingrediente.medida}</p>
-						</div>
-					</div> `
-		})
-		ing.innerHTML = html
-	}
-)
+    fetch("/ingredientes/get")
+    .then(res => res.json())
+    .then(data => {
+        let html = ""
+        data.forEach(ingrediente => {
+            // Verificar se o ingrediente já existe em ings
+            if (Array.from(ing.children).some(child => child.textContent.trim() === ingrediente.nome)) {
+                return; // Continuar para o próximo ingrediente
+            }
+            html += `<div>
+                        <p>${ingrediente.nome}</p>
+                        <div>
+                            <input type="number" name="${ingrediente.nome}">
+                            <p class="medidas">${ingrediente.medida}</p>
+                        </div>
+                    </div>`
+        })
+        ing.innerHTML += html
+    })
 })
+
 
 // Selecionar produtos em pedidos
 let produtos = document.querySelectorAll(".selecionarProdutos")
