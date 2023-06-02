@@ -22,7 +22,7 @@ router.post("/add", async (req, res) => {
   let produtosPromises = []
 
   for (let i in req.body) {
-    if (i!="cliente" && i!="telefone" && i!="data" && req.body[i]!="") {
+    if (i!="cliente" && i!="telefone" && i!="data" && req.body[i]!="" && req.body[i]!="0") {
       const promise = db.collection("produtos").doc(i).get()
         .then(doc => {
           if (doc.exists) {
@@ -41,6 +41,7 @@ router.post("/add", async (req, res) => {
   .then(() => {
     res.redirect("/pedidos")
   })
+ 
 })
 
 router.post("/edit", async (req, res) => {

@@ -8,7 +8,7 @@ document.querySelectorAll('.ingrediente form, .produto form, .pedido form').forE
 
 
 // para receber o aviso do backend
-const forms = document.querySelectorAll('.add')
+const forms = document.querySelectorAll('form')
 forms.forEach(form => {
 	form.addEventListener('submit', (event) => {
 		event.preventDefault()
@@ -36,7 +36,11 @@ forms.forEach(form => {
 					return
 				}
 			})
-		window.location.reload();
+		
+		setTimeout(() => {
+			window.location.reload()
+			}, 1500)
+		
 	})
 })
 
@@ -151,5 +155,3 @@ produtos.forEach(prod => {
 		prod.innerHTML += html
 	})
 })
-
-
