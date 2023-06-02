@@ -104,12 +104,15 @@ ings.forEach(ing => {
     fetch("/ingredientes/get")
     .then(res => res.json())
     .then(data => {
+        let existingIngredients = Array.from(ing.querySelectorAll("p")).map(p => p.textContent.trim())
+
         let html = ""
+
         data.forEach(ingrediente => {
-            // Verificar se o ingrediente já existe em ings
-            if (Array.from(ing.children).some(child => child.textContent.trim() === ingrediente.nome)) {
-                return; // Continuar para o próximo ingrediente
+            if (existingIngredients.includes(ingrediente.nome)) {
+                return
             }
+
             html += `<div>
                         <p>${ingrediente.nome}</p>
                         <div>
@@ -118,18 +121,25 @@ ings.forEach(ing => {
                         </div>
                     </div>`
         })
+
         ing.innerHTML += html
     })
 })
 
-
 // Selecionar produtos em pedidos
 let produtos = document.querySelectorAll(".selecionarProdutos")
-produtos.forEach(produto => {
+produtos.forEach(prod => {
 	fetch("/produtos/get").then(res => res.json())
 	.then(data => {
+		let existingProdutos = Array.from(prod.querySelectorAll("p")).map(p => p.textContent.trim())
+
 		let html = ""
+
 		data.forEach(produto => {
+			if (existingProdutos.includes(produto.nome)) {
+                return
+            }
+
 			html += `<div>
 						<p>${produto.nome}</p>
 						<div>
@@ -138,9 +148,8 @@ produtos.forEach(produto => {
 						</div>
 					</div> `
 		})
-		produto.innerHTML = html
-	}
-)
+		prod.innerHTML += html
+	})
 })
 
 

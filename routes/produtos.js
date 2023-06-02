@@ -28,7 +28,7 @@ router.post("/add", async (req, res) => {
         .then(doc => {
           if (doc.exists) {
             const preco = Number(doc.data().preco)
-            ingredientes[i] = [req.body[i], Number(req.body[i]) * preco]
+            ingredientes[i] = [req.body[i], Number(req.body[i]) * preco, doc.data().medida]
           }
         })
       ingredientesPromises.push(promise)
@@ -57,7 +57,7 @@ router.post("/edit", async (req, res) => {
         .then(doc => {
           if (doc.exists) {
             const preco = Number(doc.data().preco)
-            ingredientes[i] = [req.body[i], Number(req.body[i]) * preco]
+            ingredientes[i] = [req.body[i], Number(req.body[i]) * preco, doc.data().medida]
           }
         })
       ingredientesPromises.push(promise)

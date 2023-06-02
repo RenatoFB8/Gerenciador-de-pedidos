@@ -49,7 +49,7 @@ router.post("/edit", (req, res) => {
     .then(data => {
       db.collection("ingredientes").doc(nomeAntigo).delete()
       .then(() => {
-        db.collection("ingredientes").doc(nome).set({nome, valor, quantidade, preco, medida})
+        db.collection("ingredientes").doc(nome).set({nome, valor, quant, preco, medida})
         .then(() => {
           res.redirect("/ingredientes")
         })

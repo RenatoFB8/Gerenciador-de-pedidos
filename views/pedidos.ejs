@@ -4,10 +4,12 @@
     <%- include('./partials/head') %>
     <title>PEDIDOS</title>
 </head>
+
 <body>
     <header class="conteiners">
         <%- include('./partials/header') %>
     </header>
+
     <section class="conteiners pageHeader">
         <h1>pedidos</h1>
         <button>adicionar</button>
@@ -17,12 +19,12 @@
         <% pedidos.forEach(pedido => { %>
          <div class="pedido">
             <h1><%= pedido.cliente %></h1>
-            <h4><%= pedido.data %></h4>
+            <h4><%= pedido.data.split('-').reverse().join('-') %></h4>
             <h4>produtos</h4>
             <div class="listaProdutos">
                 <ul>
-                    <% for(let i in pedido.produtos) { %>
-                        <li><%= i %>: <%= pedido.produtos[i] %></li>
+                    <% for(let [produto, valor] of Object.entries(pedido.produtos)) { %>
+                        <li><%= produto %>: <%= valor[0] %> - R$<%= valor[1] %></li>
                     <% } %>
                 </ul>
             </div>
@@ -39,20 +41,22 @@
                         <input type="text" placeholder="telefone" name="telefone" value="<%= pedido.telefone %>">
                         <input type="date" name="data" value="<%= pedido.data %>">
                         <div class="selecionarProdutos">
-                            <div>
-                                <p>bolo de chocolate</p>
+                            <% for (let [produto, valor] of Object.entries(pedido.produtos)) { %>
                                 <div>
-                                    <input type="number" name="bolo">
-                                    <p>R$4,50</p>
+                                    <p><%= produto %></p>
+                                    <div>
+                                        <input type="number" name="<%= produto %>" value="<%= valor[0] %>">
+                                        <p><%= valor[1]/valor[0]  %></p>
+                                    </div>
                                 </div>
-                            </div>
+                            <% } %>
                         </div>
                         <p id="valorPedido">Valor:</p>
                         <input type="submit" value="editar">
                     </div>
                 </form>
 
-                <p> R$ 800 </p>
+                <p> R$<%= pedido.valor %> </p>
 
                 <img src="/src/lixo.png" alt="deletar" nome="<%= pedido.cliente %>">
                 <form action="/pedidos/delete" method="post">
@@ -66,12 +70,7 @@
 
         </div>
         <% }) %>
-        
-
-
     </section>
-
-    
 
     <div class="opacidade"></div>
     

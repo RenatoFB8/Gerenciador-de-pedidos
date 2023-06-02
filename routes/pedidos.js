@@ -13,42 +13,72 @@ router.get('/', async (req, res) => {
 })
 
 
-router.post("/add", (req, res) => {
+router.post("/add", async (req, res) => {
   let cliente = req.body.cliente
   let telefone = req.body.telefone
   let data = req.body.data
   
-  let produtos = {}
+  let produtos = {} 
+  let produtosPromises = []
+
   for (let i in req.body) {
-    if (req.body[i]!=cliente && req.body[i]!=telefone && req.body[i]!="" && req.body[i]!=data) {
-      produtos[i] = req.body[i]
+    if (i!="cliente" && i!="telefone" && i!="data" && req.body[i]!="") {
+      const promise = db.collection("produtos").doc(i).get()
+        .then(doc => {
+          if (doc.exists) {
+            const preco = Number(doc.data().preco)
+            produtos[i] = [req.body[i], Number(req.body[i]) * preco]
+          }
+        })
+      produtosPromises.push(promise)
     }
   }
-  db.collection("pedidos").doc(cliente).set({cliente, telefone, data:`${data.split("-")[2]}/${data.split("-")[1]}/${data.split("-")[0]}`, produtos})
+
+  await Promise.all(produtosPromises)
+  let valor = Object.values(produtos).reduce((acc, produtos) => acc + produtos[1], 0)
+
+  db.collection("pedidos").doc(cliente).set({cliente, telefone, data, produtos, valor})
   res.redirect("/pedidos")
 })
 
-router.get("/edit", (req, res) => {
-  let nome = req.body.nome
-
-  db.collection('pedidos').doc(nome).get()
-  .then(doc => {
-    res.send(doc.data())
-  })
-  res.end()
-})
-
-router.post("/edit", (req, res) => {
+router.post("/edit", async (req, res) => {
   let nomeAntigo = req.body.nomeAntigo
   let cliente = req.body.cliente
   let telefone = req.body.telefone
   let data = req.body.data
+
   let produtos = {}
+  let produtosPromises = []
 
-  db.collection("pedidos").doc(nomeAntigo).delete()
-  db.collection("pedidos").doc(cliente).set({cliente, telefone, data, produtos})
+  for (let i in req.body) {
+    if (i!="cliente" && i!="telefone" && i!="data" && req.body[i]!="") {
+      const promise = db.collection("produtos").doc(i).get()
+        .then(doc => {
+          if (doc.exists) {
+            const preco = Number(doc.data().preco)
+            produtos[i] = [req.body[i], Number(req.body[i]) * preco]
+          }
+        })
+      produtosPromises.push(promise)
+    }
+  }
 
-  res.redirect("/pedidos")   
+  await Promise.all(produtosPromises)
+  let valor = Object.values(produtos).reduce((acc, produtos) => acc + produtos[1], 0)
+
+  db.collection("pedidos").doc(nomeAntigo).get()
+  .then(d => {
+    if (d.exists) {
+      db.collection("pedidos").doc(nomeAntigo).delete()
+        .then(() => {
+          db.collection("pedidos").doc(cliente).set({cliente, telefone, data, produtos, valor})
+            .then(() => {
+              res.redirect("/pedidos")
+            })
+        })
+    }
+  })
+
 })
 
 router.post("/delete", (req, res) => {
