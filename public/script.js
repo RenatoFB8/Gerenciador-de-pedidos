@@ -155,3 +155,32 @@ produtos.forEach(prod => {
 		prod.innerHTML += html
 	})
 })
+
+const dataInput = document.getElementById('dataInput');
+
+// Obter a data atual
+const dataAtual = new Date().toISOString().split('T')[0];
+
+// Definir o atributo 'min' do campo de entrada
+dataInput.setAttribute('min', dataAtual);
+
+
+
+function formatarTelefone(input) {
+    let telefone = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+	let formatadoTelefone
+	
+
+	if (telefone.length === 10){
+		formatadoTelefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+	}
+	else {
+    	formatadoTelefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+		
+	} 
+
+
+
+	// Formato (XX) XXXXX-XXXX
+    input.value = formatadoTelefone;
+  }
