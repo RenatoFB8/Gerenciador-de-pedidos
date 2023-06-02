@@ -5,7 +5,6 @@ const app = express()
 const PORT = 3000
 
 // pegando os arquivos do diretório routes
-const index = require("./routes/index")
 const ingredientes = require("./routes/ingredientes")
 const pedidos = require("./routes/pedidos")
 const produtos = require("./routes/produtos")
@@ -20,7 +19,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 // definindo as rotas
-app.use("/", index)
+app.use("/", pedidos)
 app.use("/ingredientes", ingredientes)
 app.use("/pedidos", pedidos)
 app.use("/produtos", produtos)

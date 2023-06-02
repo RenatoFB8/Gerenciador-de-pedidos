@@ -38,7 +38,9 @@ router.post("/add", async (req, res) => {
   let valor = Object.values(produtos).reduce((acc, produtos) => acc + produtos[1], 0)
 
   db.collection("pedidos").doc(cliente).set({cliente, telefone, data, produtos, valor})
-  res.redirect("/pedidos")
+  .then(() => {
+    res.redirect("/pedidos")
+  })
 })
 
 router.post("/edit", async (req, res) => {
@@ -85,7 +87,9 @@ router.post("/delete", (req, res) => {
   let cliente = req.body.nome
 
   db.collection("pedidos").doc(cliente).delete()
-  res.redirect("/pedidos")
+  .then(() => {
+    res.redirect("/pedidos")
+  })
 })
 
 module.exports = router

@@ -41,7 +41,10 @@ router.post("/add", async (req, res) => {
   let precoFinal = preco + preco * Number(lucro)/100
 
   db.collection("produtos").doc(nome).set({ nome, lucro, ingredientes, preco:precoFinal})
-  res.redirect("/produtos")
+  .then(() => {
+    res.redirect("/produtos")
+  })
+ 
 })
 
 router.post("/edit", async (req, res) => {
@@ -87,7 +90,9 @@ router.post("/edit", async (req, res) => {
 router.post("/delete", (req, res) => {
   let nome = req.body.nome
   db.collection("produtos").doc(nome).delete()
-  res.redirect("/produtos")
+  .then(() => {
+    res.redirect("/produtos")
+  })
 })
 
 module.exports = router

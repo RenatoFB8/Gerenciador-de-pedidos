@@ -58,7 +58,7 @@
                         <input type="submit" value="editar">
                     </form>
 
-                    <p>R$<%= ingrediente.preco %>/<%= ingrediente.medida %></p>
+                    <p>R$<%= valor %>/<%= ingrediente.medida %></p>
 
                     <img src="/src/lixo.png" alt="deletar" nome="<%= ingrediente.nome %>">
                     <form action="/ingredientes/delete" method="post" nome="<%= ingrediente.nome %>">

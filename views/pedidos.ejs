@@ -24,7 +24,7 @@
             <div class="listaProdutos">
                 <ul>
                     <% for(let [produto, valor] of Object.entries(pedido.produtos)) { %>
-                        <li><%= produto %>: <%= valor[0] %> - R$<%= valor[1] %></li>
+                        <li><%= produto %>: <%= valor[0] %> - R$<%= valor[1].toFixed(2) %></li>
                     <% } %>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
                     </div>
                 </form>
 
-                <p> R$<%= pedido.valor %> </p>
+                <p> R$<%= pedido.valor.toFixed(2) %> </p>
 
                 <img src="/src/lixo.png" alt="deletar" nome="<%= pedido.cliente %>">
                 <form action="/pedidos/delete" method="post">

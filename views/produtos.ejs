@@ -22,7 +22,7 @@
                 <div class ="listaIngredientes">
                     <ul>
                         <% for(let [ingrediente, valor] of Object.entries(produto.ingredientes))  { %>
-                            <li><%= ingrediente %>: <%= valor[1] %> > R$<%= valor[0] %></li>
+                            <li><%= ingrediente %>: <%= valor[0] %> > R$<%= Number(valor[1]).toFixed(2) %></li>
                         <% } %>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
                         </div>
                     </form>
 
-                    <p>R$<%= produto.preco %></p>
+                    <p>R$<%= produto.preco.toFixed(2) %></p>
 
                     <img src="/src/lixo.png" alt="deletar" nome="<%= produto.nome %>">
                     <form action="/produtos/delete" method="post">

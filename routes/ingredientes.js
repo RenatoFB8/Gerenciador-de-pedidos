@@ -26,10 +26,13 @@ router.post("/add", (req, res) => {
   let preco = valor/quantidade
 
   if(isNaN(preco) == false){
-    preco = Number(preco).toFixed(2)
+    preco = Number(preco)
 
     db.collection('ingredientes').doc(nome).set({nome, valor, quantidade, preco, medida})
-    res.redirect("/ingredientes")
+    .then(() => {
+      res.redirect("/ingredientes")
+    })
+
   } else {
     let aviso = "O valor digitado não é um número"
     res.json({aviso})
@@ -62,6 +65,9 @@ router.post("/edit", (req, res) => {
 router.post("/delete", (req, res) => {
   let nome = req.body.nome
   db.collection("ingredientes").doc(nome).delete()
-  res.redirect("/ingredientes")
+  .then(() => {
+    res.redirect("/ingredientes")
+  })
+
 })
 module.exports = router
