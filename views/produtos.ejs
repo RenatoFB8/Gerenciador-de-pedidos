@@ -22,7 +22,7 @@
                 <div class ="listaIngredientes">
                     <ul>
                         <% for(let [ingrediente, valor] of Object.entries(produto.ingredientes))  { %>
-                            <li><%= ingrediente %>: <%= valor[0] %> > R$<%= Number(valor[1]).toFixed(2) %></li>
+                            <li><%= ingrediente %>: <%= valor[0] %> - R$<%= Number(valor[1]).toFixed(2) %></li>
                         <% } %>
                     </ul>
                 </div>
