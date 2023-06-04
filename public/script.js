@@ -12,14 +12,39 @@ const forms = document.querySelectorAll('form')
 forms.forEach(form => {
 	form.addEventListener('submit', (event) => {
 		event.preventDefault()
-	
+		
 		const formData = new FormData(form)
 		const jsonData = {};
-	
-		for (let [key, value] of formData.entries()) {
-			jsonData[key] = value;
+
+		const radios = form.querySelectorAll('input[type="radio"]');
+		let radioSelected
+		if (radios.length!=0) {
+			radioSelected = false;
+		} else {
+			radioSelected = true;
 		}
 		
+		for (let i = 0; i < radios.length; i++) {
+			if (radios[i].checked) {
+				radioSelected = true;
+				break;
+			}
+		}
+
+		if (!radioSelected) {
+			alert('Selecione a unidade de medida')
+			return
+		}
+
+
+		for (let [key, value] of formData.entries()) {
+			if (value.length == 0){
+				alert(`Campo ${key} não pode estar vazio`)
+				return
+			}
+			jsonData[key] = value;
+		}
+	
 		fetch(form.getAttribute("action"), {
 				method: 'POST',
 				headers: {
@@ -120,7 +145,7 @@ ings.forEach(ing => {
             html += `<div>
                         <p>${ingrediente.nome}</p>
                         <div>
-                            <input type="number" name="${ingrediente.nome}">
+                            <input type="number" name="${ingrediente.nome}" value="0" autocomplete="off">
                             <p class="medidas">${ingrediente.medida}</p>
                         </div>
                     </div>`
@@ -147,8 +172,8 @@ produtos.forEach(prod => {
 			html += `<div>
 						<p>${produto.nome}</p>
 						<div>
-							<input type="number" name="${produto.nome}">
-							<p>${produto.preco}</p>
+							<input type="number" name="${produto.nome}" value="0" autocomplete="off">
+							<p>${produto.preco.toFixed(2)}</p>
 						</div>
 					</div> `
 		})

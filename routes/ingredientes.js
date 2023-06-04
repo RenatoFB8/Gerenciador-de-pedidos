@@ -43,16 +43,16 @@ router.post("/edit", (req, res) => {
   let nomeAntigo = req.body.nomeAntigo
   let nome = req.body.nome
   let valor = Number(req.body.valor.replace(',','.'))
-  let quant = req.body.quantidade
+  let quantidade = req.body.quantidade
   let medida = req.body.medida
 
-  let preco = valor/quant
+  let preco = valor/quantidade
 
   db.collection("ingredientes").doc(nomeAntigo).get()
     .then(data => {
       db.collection("ingredientes").doc(nomeAntigo).delete()
       .then(() => {
-        db.collection("ingredientes").doc(nome).set({nome, valor, quant, preco, medida})
+        db.collection("ingredientes").doc(nome).set({nome, valor, quantidade, preco, medida})
         .then(() => {
           res.redirect("/ingredientes")
         })

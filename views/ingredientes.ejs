@@ -32,28 +32,22 @@
                     <form action="/ingredientes/edit" method="post" nome="<%= ingrediente.nome %>">
                         <h3>editar</h3>
                         <input type="hidden" name="nomeAntigo" value="<%= ingrediente.nome %>">
-                        <input type="text" name="nome" value="<%= ingrediente.nome %>" placeholder="nome">
-                        <input type="text" name="valor" value="<%= ingrediente.valor %>" placeholder="novo preço">
-                        <input type="text" name="quantidade" value="<%= ingrediente.quantidade %>" placeholder="quantidade">
+                        <input type="text" name="nome" value="<%= ingrediente.nome %>" placeholder="nome" autocomplete="off">
+                        <input type="text" name="valor" value="<%= ingrediente.valor %>" placeholder="valor" autocomplete="off">
+                        <input type="text" name="quantidade" value="<%= ingrediente.quantidade %>" placeholder="quantidade" autocomplete="off">
                         <div class="radios">
-                            <div>
-                                <label>
-                                    <input type="radio" name="medida" value="u">
-                                    unidades
-                                </label>
-                            </div>
-                            <div>
-                                <label for="gedit">
-                                    <input id="gedit" type="radio" name="medida" value="g">
-                                    gramas
-                                </label>
-                            </div>
-                            <div>
-                                <label for="mledit">
-                                    <input id="mledit" type="radio" name="medida" value="ml">
-                                    mililitro
-                                </label>
-                            </div>
+                            <label>
+                                <input type="radio" name="medida" value="u">
+                                unidades
+                            </label>
+                            <label>
+                                <input type="radio" name="medida" value="g">
+                                gramas
+                            </label>
+                            <label>
+                                <input type="radio" name="medida" value="ml">
+                                mililitro
+                            </label>
                         </div>
                         <input type="submit" value="editar">
                     </form>
@@ -78,22 +72,22 @@
     <section class="addConteudo">
         <h2>adicionar ingrediente</h2>
         <form action="/ingredientes/add" method="post" class="add">
-            <input type="text" name="nome" placeholder="nome">
-            <input type="text" name="valor" placeholder="valor">
-            <input type="text" name="quantidade" placeholder="quantidade">
+            <input type="text" name="nome" placeholder="nome" autocomplete="off">
+            <input type="text" name="valor" placeholder="valor" autocomplete="off">
+            <input type="text" name="quantidade" placeholder="quantidade" autocomplete="off">
             <div class="radios">
-                <div>
-                    <input id="u" type="radio" name="medida" value="u">
-                    <label for="u">unidades</label>
-                </div>
-                <div>
-                    <input id="g" type="radio" name="medida" value="g">
-                    <label for="g">gramas</label>
-                </div>
-                <div>
-                    <input id="ml" type="radio" name="medida" value="ml">
-                    <label for="ml">mililitro</label>
-                </div>
+                    <label>
+                        <input id="u" type="radio" name="medida" value="u" checked>
+                        unidades
+                    </label>
+                    <label for="g">
+                        <input id="g" type="radio" name="medida" value="g">
+                        gramas
+                    </label>
+                    <label for="ml">
+                        <input id="ml" type="radio" name="medida" value="ml">
+                        mililitro
+                    </label>
             </div>
             <input type="submit" value="adicionar">
         </form>

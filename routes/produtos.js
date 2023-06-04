@@ -23,7 +23,7 @@ router.post("/add", async (req, res) => {
   let ingredientesPromises = []
 
   for (let i in req.body) {
-    if (i!="nome" && i!="lucro" && req.body[i]!="") {
+    if (i!="nome" && i!="lucro" && req.body[i]!="" && req.body[i]!="0") {
       const promise = db.collection("ingredientes").doc(i).get()
         .then(doc => {
           if (doc.exists) {
@@ -55,7 +55,7 @@ router.post("/edit", async (req, res) => {
   let ingredientesPromises = []
 
   for (let i in req.body) {
-    if (i!="nome" && i!="nomeAntigo" && i!="lucro" && req.body[i]!="") {
+    if (i!="nome" && i!="nomeAntigo" && i!="lucro" && req.body[i]!="" && req.body[i]!="0") {
       const promise = db.collection("ingredientes").doc(i).get()
         .then(doc => {
           if (doc.exists) {

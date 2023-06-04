@@ -36,9 +36,9 @@
                 <form action="/pedidos/edit" method="post" class="prodLarg">
                     <h3>editar</h3>
                     <div class="editar-produto">
-                        <input type="hidden" name="nomeAntigo" value="<%= pedido.cliente %>">
-                        <input type="text" name="cliente" placeholder="cliente" value="<%= pedido.cliente %>">
-                        <input type="text" placeholder="telefone" name="telefone" value="<%= pedido.telefone %>">
+                        <input type="hidden" name="nomeAntigo" value="<%= pedido.cliente %>" autocomplete="off">
+                        <input type="text" name="cliente" placeholder="cliente" value="<%= pedido.cliente %>" autocomplete="off">
+                        <input type="text" placeholder="telefone" name="telefone" value="<%= pedido.telefone %>" autocomplete="off">
                         <input type="date" name="data" value="<%= pedido.data %>">
                         <div class="selecionarProdutos">
                             <% for (let [produto, valor] of Object.entries(pedido.produtos)) { %>
@@ -46,7 +46,7 @@
                                     <p><%= produto %></p>
                                     <div>
                                         <input type="number" name="<%= produto %>" value="<%= valor[0] %>">
-                                        <p><%= valor[1]/valor[0]  %></p>
+                                        <p><%= (valor[1]/valor[0]).toFixed(2)  %></p>
                                     </div>
                                 </div>
                             <% } %>
@@ -77,8 +77,8 @@
     <section class="addConteudo prodLarg">
         <h2>adicionar pedido</h2>
         <form action="/pedidos/add" method="post" class="add" id="add-pedido">
-            <input type="text" name="cliente" placeholder="cliente">
-            <input type="text" maxlength="15" placeholder="telefone" name="telefone" oninput="formatarTelefone(this)">
+            <input type="text" name="cliente" placeholder="cliente" autocomplete="off">
+            <input type="text" maxlength="15" placeholder="telefone" name="telefone" oninput="formatarTelefone(this)" autocomplete="off">
             <input type="date" id="dataInput" name="data" min="">
             <div class="selecionarProdutos"></div>
             <input type="submit" value="adicionar">
