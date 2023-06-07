@@ -8,7 +8,8 @@ async function getPedidos() {
   return lista
 }
 router.get('/', async (req, res) => {
-  const pedidos = await getPedidos();
+  const pedidos = await getPedidos()
+  pedidos.sort((a, b) => new Date(a.data) - new Date(b.data))
   res.render("pedidos", {pedidos})
 })
 
