@@ -20,15 +20,30 @@
          <div class="pedido">
             <h1><%= pedido.cliente %></h1>
             <h4><%= pedido.data.split('-').reverse().join('-') %></h4>
-            <h4>produtos</h4>
             <div class="listaProdutos">
-                <ul>
+                <!-- <ul>
                     <% for(let [produto, valor] of Object.entries(pedido.produtos)) { %>
-                        <li><%= produto %>: <%= valor[0] %> - R$<%= valor[1].toFixed(2) %></li>
+                        <li><%= produto %>: <%= valor[0] %> unidades |   R$<%= valor[1].toFixed(2) %></li>
                     <% } %>
-                </ul>
+                </ul> -->
+                <table>
+                
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                    </tr>
+                    <% for(let [produto, valor] of Object.entries(pedido.produtos)) { %>
+                        <tr>
+                            <td><%= produto %></td>
+                            <td><%= valor[0] %></td>
+                            <td>R$<%= valor[1].toFixed(2) %></td>
+                        </tr>
+                    <% } %>
+                </table>
             </div>
 
+          
             <p class="telefone"><%= pedido.telefone %></p>
 
             <div>

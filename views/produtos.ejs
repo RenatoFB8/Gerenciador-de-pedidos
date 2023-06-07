@@ -18,13 +18,21 @@
         <% produtos.forEach(produto => { %>
             <div class="produto">
                 <h1><%= produto.nome %></h1> 
-                <h4>ingredientes</h4>
                 <div class ="listaIngredientes">
-                    <ul>
+                    <table>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                        </tr>
                         <% for(let [ingrediente, valor] of Object.entries(produto.ingredientes))  { %>
-                            <li><%= ingrediente %>: <%= valor[0] %> - R$<%= Number(valor[1]).toFixed(2) %></li>
+                        <tr>
+                            <td><%= ingrediente %> </td> 
+                            <td><%= valor[0] %></td> 
+                            <td>R$<%= Number(valor[1]).toFixed(2) %></td>
+                        </tr>
                         <% } %>
-                    </ul>
+                        </table>
                 </div>
                 <p class="lucro">lucro: <%= produto.lucro %>%</p>
                 
