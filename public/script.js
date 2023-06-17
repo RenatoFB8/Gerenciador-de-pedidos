@@ -202,10 +202,29 @@ function formatarTelefone(input) {
 	else {
     	formatadoTelefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
 		
-	} 
-
-
-
+	}
 	// Formato (XX) XXXXX-XXXX
     input.value = formatadoTelefone;
   }
+
+
+// valorPedido de acordo com produtos
+let pedidos = document.querySelectorAll(".pedido")
+
+pedidos.forEach(pedido => {
+	let valorPedido = pedido.querySelector(".valorPedido")
+	pedido.querySelectorAll(".selecionarProdutos").forEach(input => {
+		input.addEventListener("input", (e) => {
+			if (e.target.tagName === 'INPUT') {
+				let valor = 0
+				pedido.querySelectorAll(".selecionarProdutos input").forEach(inputt => {
+					let preco = inputt.nextElementSibling
+					valor += Number(inputt.value) * Number(preco.textContent)
+				})
+				valorPedido.textContent = `Valor: ${valor.toFixed(2)}`
+			  }
+		})
+	})
+})
+
+
