@@ -209,7 +209,7 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
-#add-produto input[type=submit], .editar-produto input[type=submit] , .editar-pedido input[type=submit], #add-pedido input[type=submit] {
+#add-produto input[type=submit], .editar-produto input[type=submit]{
     grid-column-end: span 2;
 }
 #add-produto .selecionarIngredientes {
