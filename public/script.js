@@ -141,11 +141,10 @@ ings.forEach(ing => {
             if (existingIngredients.includes(ingrediente.nome)) {
                 return
             }
-
             html += `<div>
                         <p>${ingrediente.nome}</p>
                         <div>
-                            <input type="number" name="${ingrediente.nome}" value="0" autocomplete="off">
+                            <input type="number" name="${ingrediente.nome}" value="0" valor="${ingrediente.preco}" autocomplete="off">
                             <p class="medidas">${ingrediente.medida}</p>
                         </div>
                     </div>`
@@ -172,7 +171,7 @@ produtos.forEach(prod => {
 			html += `<div>
 						<p>${produto.nome}</p>
 						<div>
-							<input type="number" name="${produto.nome}" value="0" autocomplete="off">
+							<input type="number" name="${produto.nome}" value="0" valor="${produto.preco}" autocomplete="off">
 							<p>${produto.preco.toFixed(2)}</p>
 						</div>
 					</div> `
@@ -183,11 +182,13 @@ produtos.forEach(prod => {
 
 const dataInput = document.getElementById('dataInput');
 
-// Obter a data atual
-const dataAtual = new Date().toISOString().split('T')[0];
+if (dataInput) {
+	// Obter a data atual
+	const dataAtual = new Date().toISOString().split('T')[0];
 
-// Definir o atributo 'min' do campo de entrada
-dataInput.setAttribute('min', dataAtual);
+	// Definir o atributo 'min' do campo de entrada
+	dataInput.setAttribute('min', dataAtual);	
+}
 
 
 
@@ -209,20 +210,30 @@ function formatarTelefone(input) {
 
 
 // valorPedido de acordo com produtos
-let pedidos = document.querySelectorAll(".pedido")
+let pedidos = document.querySelectorAll(".pedido, .produto, .addConteudo")
 
 pedidos.forEach(pedido => {
-	let valorPedido = pedido.querySelector(".valorPedido")
-	pedido.querySelectorAll(".selecionarProdutos").forEach(input => {
+	let valorPedido = pedido.querySelector(".valorPedido, .valorProduto")
+	pedido.querySelectorAll(".selecionarProdutos, .selecionarIngredientes,  input[name=lucro]").forEach(input => {
 		input.addEventListener("input", (e) => {
 			if (e.target.tagName === 'INPUT') {
 				let valor = 0
-				pedido.querySelectorAll(".selecionarProdutos input").forEach(inputt => {
-					let preco = inputt.nextElementSibling
-					valor += Number(inputt.value) * Number(preco.textContent)
+				let lucro
+				pedido.querySelectorAll(".selecionarProdutos input, .selecionarIngredientes input,  input[name=lucro]").forEach(inputt => {
+					if (inputt.getAttribute("name")=="lucro") {
+						lucro = inputt.value
+					} else {
+						let preco = inputt.getAttribute("valor")
+						valor += Number(inputt.value) * Number(preco)
+					}
 				})
-				valorPedido.textContent = `Valor: ${valor.toFixed(2)}`
-			  }
+				if (lucro) {
+					valorPedido.textContent = `Valor: ${(valor + valor * Number(lucro)/100).toFixed(2)}`
+				}else {
+					console.log("Oi")
+					valorPedido.textContent = `Valor: ${valor.toFixed(2)}`
+				}
+			}
 		})
 	})
 })

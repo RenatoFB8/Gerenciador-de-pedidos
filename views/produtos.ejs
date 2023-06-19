@@ -48,13 +48,13 @@
                                     <div>
                                         <p><%= ingrediente %></p>
                                         <div>
-                                            <input type="number" name="<%= ingrediente %>" value="<%= valor[0] %>">
+                                            <input type="number" name="<%= ingrediente %>" value="<%= valor[0] %>" valor="<%= valor[1]/Number(valor[0]) %>" autocomplete="off">
                                             <p class="medidas"><%= valor[2]%></p>
                                         </div>
                                     </div>
                                 <% } %>
                             </div>
-                            <input type="text" name="lucro" placeholder="lucro" value="<%= produto.lucro %>">
+                            <input type="text" name="lucro" placeholder="lucro" value="<%= produto.lucro %>" autocomplete="off">
                             <p class="valorProduto">Valor:</p>
                             <input type="submit" value="editar">
                         </div>

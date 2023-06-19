@@ -17,7 +17,7 @@
 
     <section class="conteiners pedidos">
         <% pedidos.forEach(pedido => { %>
-        <div class="pedido">
+         <div class="pedido">
             <h1><%= pedido.cliente %></h1>
             <h4><%= pedido.data.split('-').reverse().join('-') %></h4>
             <div class="listaProdutos">
@@ -48,7 +48,7 @@
                 <img src="/src/lapis.png" alt="editar" nome="<%= pedido.cliente %>">
                 <form action="/pedidos/edit" method="post" class="prodLarg">
                     <h3>editar</h3>
-                    <div class="editar-pedido">
+                    <div class="editar-produto">
                         <input type="hidden" name="nomeAntigo" value="<%= pedido.cliente %>" autocomplete="off">
                         <input type="text" name="cliente" placeholder="cliente" value="<%= pedido.cliente %>" autocomplete="off">
                         <input type="text" placeholder="telefone" name="telefone" value="<%= pedido.telefone %>" autocomplete="off">
@@ -58,15 +58,14 @@
                                 <div>
                                     <p><%= produto %></p>
                                     <div>
-                                        <input type="number" name="<%= produto %>" value="<%= valor[0] %>">
+                                        <input type="number" name="<%= produto %>" value="<%= valor[0] %>" valor="<%= valor[1]/valor[0] %>">
                                         <p><%= (valor[1]/valor[0]).toFixed(2)  %></p>
                                     </div>
                                 </div>
                             <% } %>
                         </div>
-
-                        <input type="submit" value="editar">
                         <p class="valorPedido">Valor:</p>
+                        <input type="submit" value="editar">
                     </div>
                 </form>
 
