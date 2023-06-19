@@ -17,7 +17,7 @@
 
     <section class="conteiners pedidos">
         <% pedidos.forEach(pedido => { %>
-         <div class="pedido">
+        <div class="pedido">
             <h1><%= pedido.cliente %></h1>
             <h4><%= pedido.data.split('-').reverse().join('-') %></h4>
             <div class="listaProdutos">
@@ -94,8 +94,8 @@
             <input type="text" maxlength="15" placeholder="telefone" name="telefone" oninput="formatarTelefone(this)" autocomplete="off">
             <input type="date" id="dataInput" name="data" min="">
             <div class="selecionarProdutos"></div>
-            <input type="submit" value="adicionar">
             <p class="valorPedido">Valor:</p>
+            <input type="submit" value="adicionar">
         </form>
         
         </section>

@@ -129,13 +129,13 @@ nav {
     flex-direction: column;
     gap: 13px;
 }
+
 .addConteudo form > input:not([type=radio]), .ingrediente form input, .produto form input:not([type = number]), .pedido form input:not([type = number]){
     background-color: #D9D9D9;
     padding: 15px;
     border-radius: 10px;
     width: 100%;
 }
-
 .addConteudo form > .radios {
     display: flex;
     gap: 20px;
@@ -209,7 +209,7 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
-#add-produto input[type=submit], .editar-produto input[type=submit] , .editar-pedido input[type=submit] {
+#add-produto input[type=submit], .editar-produto input[type=submit] , .editar-pedido input[type=submit], #add-pedido input[type=submit] {
     grid-column-end: span 2;
 }
 #add-produto .selecionarIngredientes {
@@ -246,6 +246,7 @@ nav {
     background-color: transparent;
     border: 1px solid #5F4C9A;
     border-radius: 6px;
+    text-align: center;
 }
 
 .prodLarg{
@@ -332,11 +333,11 @@ input[type=number] {
     background-color: transparent;
     border: 1px solid #5F4C9A;
     border-radius: 6px;
+    text-align: center;
 }
 
-.valorPedido, .valorLucro {
+.valorPedido, .valorProduto {
     position: relative;
-    bottom: 15px;
     left: 5px;
 }
 
