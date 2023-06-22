@@ -60,11 +60,12 @@ forms.forEach(form => {
 				} catch {
 					return
 				}
+				
 			})
 		
-		setTimeout(() => {
-			window.location.reload()
-			}, 1500)
+			setTimeout(() => {
+				window.location.reload()
+				}, 1700)
 		
 	})
 })
@@ -228,14 +229,13 @@ pedidos.forEach(pedido => {
 					}
 				})
 				if (lucro) {
-					valorPedido.textContent = `Valor: ${(valor + valor * Number(lucro)/100).toFixed(2)}`
+					valorPedido.textContent = `Valor: ${(Math.round(((valor + valor * Number(lucro)/100)) *10)/10).toFixed(2)}`
 				}else {
-					console.log("Oi")
+					
 					valorPedido.textContent = `Valor: ${valor.toFixed(2)}`
 				}
 			}
 		})
 	})
 })
-
 

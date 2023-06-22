@@ -38,7 +38,7 @@ router.post("/add", async (req, res) => {
   await Promise.all(ingredientesPromises)
 
   let preco = Object.values(ingredientes).reduce((acc, ingredientes) => acc + ingredientes[1], 0)
-  let precoFinal = preco + preco * Number(lucro)/100
+  let precoFinal = Math.round((preco + preco * Number(lucro)/100)*10)/10
 
   db.collection("produtos").doc(nome).set({ nome, lucro, ingredientes, preco:precoFinal})
   .then(() => {
@@ -70,7 +70,7 @@ router.post("/edit", async (req, res) => {
   await Promise.all(ingredientesPromises)
 
   let preco = Object.values(ingredientes).reduce((acc, ingredientes) => acc + ingredientes[1], 0)
-  let precoFinal = preco + preco * Number(lucro)/100
+  let precoFinal = Math.round((preco + preco * Number(lucro)/100)*10)/10
 
   db.collection("produtos").doc(nomeAntigo).get()
   .then(data => {

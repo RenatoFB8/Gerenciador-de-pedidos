@@ -136,11 +136,11 @@ nav {
     border-radius: 10px;
     width: 100%;
 }
-.addConteudo form > .radios {
+.radios {
     display: flex;
     gap: 20px;
 }
-.addConteudo form > .radios > div{
+.radios label {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -198,7 +198,7 @@ nav {
     cursor: pointer;
 }
 
-.ingrediente div, .produto > div:not(.selecionarIngredientes div), .pedido > div:not(.selecionarProdutos div)  {
+.ingrediente div, .produto > div:not(.selecionarIngredientes div), .pedido > div:not(.selecionarProdutos div) {
     display: flex;
     width: 100%;
     justify-content: space-between;
