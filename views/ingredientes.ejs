@@ -30,7 +30,7 @@
                 <div>
                     <img src="/src/lapis.png" alt="editar" nome="<%= ingrediente.nome %>">
                     <form action="/ingredientes/edit" method="post" nome="<%= ingrediente.nome %>">
-                        <h3>editar</h3>
+                        <h2>editar</h2>
                         <input type="hidden" name="nomeAntigo" value="<%= ingrediente.nome %>">
                         <input type="text" name="nome" value="<%= ingrediente.nome %>" placeholder="nome" autocomplete="off">
                         <input type="text" name="valor" value="<%= ingrediente.valor %>" placeholder="valor" autocomplete="off">
@@ -76,18 +76,18 @@
             <input type="text" name="valor" placeholder="valor" autocomplete="off">
             <input type="text" name="quantidade" placeholder="quantidade" autocomplete="off">
             <div class="radios">
-                    <label>
-                        <input id="u" type="radio" name="medida" value="u" checked>
-                        unidades
-                    </label>
-                    <label for="g">
-                        <input id="g" type="radio" name="medida" value="g">
-                        gramas
-                    </label>
-                    <label for="ml">
-                        <input id="ml" type="radio" name="medida" value="ml">
-                        mililitro
-                    </label>
+                <label>
+                    <input type="radio" name="medida" value="u" checked>
+                    unidades
+                </label>
+                <label>
+                    <input type="radio" name="medida" value="g">
+                    gramas
+                </label>
+                <label>
+                    <input type="radio" name="medida" value="ml">
+                    mililitro
+                </label>
             </div>
             <input type="submit" value="adicionar">
         </form>

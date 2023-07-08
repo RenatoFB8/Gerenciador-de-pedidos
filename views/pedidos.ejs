@@ -47,7 +47,7 @@
             <div>
                 <img src="/src/lapis.png" alt="editar" nome="<%= pedido.cliente %>">
                 <form action="/pedidos/edit" method="post" class="prodLarg">
-                    <h3>editar</h3>
+                    <h2>editar</h2>
                     <div class="editar-produto">
                         <input type="hidden" name="nomeAntigo" value="<%= pedido.cliente %>" autocomplete="off">
                         <input type="text" name="cliente" placeholder="cliente" value="<%= pedido.cliente %>" autocomplete="off">
@@ -86,7 +86,6 @@
     </section>
 
     <div class="opacidade"></div>
-    
     <section class="addConteudo prodLarg">
         <h2>adicionar pedido</h2>
         <form action="/pedidos/add" method="post" class="add" id="add-pedido">
